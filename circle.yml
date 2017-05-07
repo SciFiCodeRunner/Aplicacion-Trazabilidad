@@ -1,14 +1,1 @@
 
-machine:
-  php  version: 5.4.21
-dependencies:
-  pre:
-	- echo "memory_limit = -1" > ~/.phpenv/versions/$(phpenv global)/etc/conf.d/memory.ini
-checkout:
-  post:
-    - git submodule sync
-    - git submodule update --init
-test:
-  override:
-      - php ./app/run-server.php --daemon
-      - php ./test-suite/run.php --unit-tests
