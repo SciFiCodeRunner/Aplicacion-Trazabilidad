@@ -12,12 +12,15 @@
         "laravel/framework": "5.4.*",
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^5.3.0",
-        "rackspace/php-opencloud": "dev-master"
+        "rackspace/php-opencloud": "dev-master",
+        "type": "git",
+        "url": "https://github.com/laravel/homestead"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "^5.7"
+        "phpunit/phpunit": "^5.7",
+        "laravel/homestead": "dev-php-7"
     },
     "autoload": {
         "classmap": [
