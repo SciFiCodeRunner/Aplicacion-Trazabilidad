@@ -18,10 +18,10 @@ class CrearConductorTest extends BrowserKitTestCase
     public function testExample()
     {
         $this->visit('traza/choferes/create')
-    	->type('Cristian Soto','nombre')
-    	->type('106837633','cedula')
-    	->type('7475534','telefono')
-    	->type('yulima 3 etapa','direccion')
+    	->type('Soto','nombre')
+    	->type('106833','cedula')
+    	->type('747534','telefono')
+    	->type('yulma 3 etapa','direccion')
     	->press('guardar')
     	->seePageIs('traza/choferes')
     	->see('106837633');
