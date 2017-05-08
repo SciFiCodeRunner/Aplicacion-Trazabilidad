@@ -13,8 +13,8 @@ class Example2Test extends TestCase
      *
      * @return void
      */
-    public function testBasicTest()
+    public function testBasicTest2()
     {
-      $this->assertTrue(false);
+      $this->assertTrue(tru);
 }
 }
