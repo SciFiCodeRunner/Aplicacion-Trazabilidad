@@ -13,26 +13,18 @@
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			<div class="table-responsive">
 				<table class= "table table-striped table-bordered table-condensed table-hover">
-					<thead>
-						<th>Id</th>
+					<thead class="bg-info">
 						<th>Empresa</th>
 						<th>Conductor</th>
 						<th>Placa	</th>
-						<th>Cantidad viajes</th>
-						<th>Volumen carga</th>
-						<th>Volumen transportado</th>
 						<th>Costo acarreo</th>	
 						<th>Opciones</th>		
 					</thead>
 					@foreach($vehiculos as $vehi)
 					<tr>
-						<td>{{$vehi->idVehiculo}}</td>
 						<td>{{$vehi->Empresa}}</td>
 						<td>{{$vehi->Conductor}}</td>
 						<td>{{$vehi->placa}}</td>
-						<td>{{$vehi->cantidad_viajes}}</td>
-						<td>{{$vehi->volumen_carga}}</td>
-						<td>{{$vehi->volumen_transportado}}</td>
 						<td>{{$vehi->costo_acarreo}}</td>
 						<td>
 							<a href="{{URL::action('VehiculoController@edit',$vehi->idVehiculo)}}">

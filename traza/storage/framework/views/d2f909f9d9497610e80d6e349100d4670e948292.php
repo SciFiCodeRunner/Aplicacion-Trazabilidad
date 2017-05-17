@@ -93,11 +93,13 @@
               <a href="#">
             
 			  <i class="fa fa-cogs" aria-hidden="true"></i>
-                <span>General</span>
+                <span>Produccion General</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class=" treeview active-menu">
-                <li><a href=""><i class="fa fa-circle-o"></i> Listas</a></li>
+                <li><a href="<?php echo e(url('traza/listas')); ?>"><i class="fa fa-circle-o "></i>Vehiculos</a></li>
+                  <li><a href="<?php echo e(url('traza/listas')); ?>"><i class="fa fa-circle-o "></i>Canteras</a></li>
+                    <li><a href="<?php echo e(url('traza/listas')); ?>"><i class="fa fa-circle-o "></i>Material</a></li>
               </ul>
             </li>
             <li class=" treeview active">
@@ -115,7 +117,7 @@
             <li class="treeview active">
               <a href="#">
                   <i class="fa fa-truck" aria-hidden="true"></i>
-                <span>Volquetas</span>
+                <span>Vehiculos</span>
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class=" treeview-menu">
@@ -131,7 +133,7 @@
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class=" treeview-menu">
-                <li><a href="<?php echo e(url('traza/materiales')); ?>"><i class="fa fa-circle-o"></i>Produccion</a></li>
+                <li><a href="<?php echo e(url('traza/materiales')); ?>"><i class="fa fa-circle-o"></i>material</a></li>
                
               </ul>
             </li>      

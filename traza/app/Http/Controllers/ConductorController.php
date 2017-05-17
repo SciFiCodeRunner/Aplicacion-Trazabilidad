@@ -20,7 +20,7 @@ public function __construct(){
 			$query=trim($request->get('searchText'));
 			$choferes=DB::table('choferes')
 			->leftJoin('vehiculos_transporte as vt','choferes.idChofer','=','vt.Choferes_idChofer')
-			->select('nombre','cedula','telefono','direccion','idChofer','vt.placa as placa')
+			->select('idChofer','nombre','cedula','telefono','direccion','vt.placa as placa')
 			->where('estadoChofer','=',1)
 		
 			->paginate(100);

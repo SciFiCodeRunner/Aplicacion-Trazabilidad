@@ -21,7 +21,7 @@ class VehiculoController extends Controller
 			$vehiculos=DB::table('vehiculos_transporte as vh')
 			->join('choferes as ch','vh.Choferes_idChofer','=','ch.idChofer')
 			->join('empresas as emp','vh.Empresa_idEmpresa','=','emp.idEmpresa')
-			->select('vh.idVehiculo','vh.placa','vh.costo_acarreo','vh.volumen_carga','vh.cantidad_viajes','vh.volumen_transportado','emp.nombre as Empresa','ch.nombre as Conductor')
+			->select('vh.idVehiculo','vh.placa','vh.costo_acarreo','vh.volumen_transportado','emp.nombre as Empresa','ch.nombre as Conductor')
 			->where('estado','=',1)
 			->where('vh.placa','LIKE','%'.$query.'%')
 

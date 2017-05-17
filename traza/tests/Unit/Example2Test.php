@@ -15,6 +15,6 @@ class Example2Test extends TestCase
      */
     public function testBasicTest2()
     {
-      $this->assertTrue(tru);
+      $this->assertTrue(true);
 }
 }

@@ -50,6 +50,7 @@ class VehiculoTransporteController extends Controller
 		$vehiculo->numeroRecibo=$request->get('numeroRecibo');
 		$vehiculo->observaciones=$request->get('observaciones');
 		$vehiculo->idVehiculo=$request->get('idVehiculo');
+		DB::table('vehiculos_transporte')->increment('cantidad_viajes', 1, ['idVehiculo' => 'idVehiculo']);
 		$vehiculo->idMaterial=$request->get('idMaterial');
 		$vehiculo->id_abscisa_cargue=$request->get('id_abscisa_cargue');
 		$vehiculo->id_abscisa_descargue=$request->get('id_abscisa_descargue');

@@ -40,8 +40,22 @@
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
-						<label for="volumen_excavado_teorico">volumen excavado teorico</label>
-						<input type="text" name="volumen_excavado_teorico" class="form-control" placeholder="Volumen teorico excavado...">
+						<label for="volumen_excavado_teorico">volumen corte teorico</label>
+						<input type="text" name="volumen_excavado_teorico" class="form-control" placeholder="Volumen corte  teorico...">
+
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+					<div class="form-group">
+						<label for="volumen_llenado_teorico">Coeficiente Real Corte</label>
+						<input type="text" name="volumen_llenado_teorico" class="form-control" placeholder="volumen Real corte...">
+
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+					<div class="form-group">
+						<label for="volumen_llenado_teorico">Coeficiente Real lleno</label>
+						<input type="text" name="volumen_llenado_teorico" class="form-control" placeholder="volumen Real lleno...">
 
 					</div>
 				</div>

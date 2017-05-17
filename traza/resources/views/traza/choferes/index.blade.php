@@ -5,7 +5,7 @@
 
 			<h3>Listado de conductores <a href="choferes/create"> <button class="btn btn-success">Nuevo</button></a></h3>
 			@include('traza.choferes.search')
-			<button type="button" class="btn btn-info">Exportar Excel</button>
+			<a href="{{URL::to('getExport')}}"> <button class="btn btn-success">Exportar excel</button></a>
 		</div>
 	</div>
 	<div class= "row">
@@ -13,7 +13,7 @@
 			<div class="table-responsive">
 				<table class= "table table-striped table-bordered table-condensed table-hover">
 					<thead>
-						<th>Id</th>
+						
 						<th>Nombre</th>
 						<th>Cedula</th>
 						<th>Telefono</th>
@@ -22,7 +22,6 @@
 						<th>Opciones</th>	
 					</thead>
 					@foreach($choferes as $chofer)
-					<tr><td>{{$chofer->idChofer}}
 						<td>{{$chofer->nombre}}</td>
 						<td>{{$chofer->cedula}}</td>
 						<td>{{$chofer->telefono}}</td>

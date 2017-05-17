@@ -41,21 +41,6 @@
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
-						<label for="cantidad_viajes">Cantidad de viajes</label>
-						<input type="text" name="cantidad_viajes" class="form-control" placeholder="cantidadViajesRealizados...">
-					</div>
-				</div>
-				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-					<div class="form-group">
-						<label for="volumen_transportado">Volumen transportado</label>
-						<input type="text" name="volumen_transportado" class="form-control" placeholder="volumenTransportado..">
-
-					</div>
-				</div>
-
-
-				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-					<div class="form-group">
 						<label>Conductor</label>
 						<select name="Choferes_idChofer" class="form-control">
 							@foreach ($chofer as $cho)
