@@ -27,7 +27,7 @@
 						<td><?php echo e($vehi->nombre); ?></td>
 						<td><?php echo e($vehi->cantidad_viajes); ?>
 
-						<td><?php echo e($vehi->VolumenTransportado); ?> m3</td>
+						<td><?php echo e($vehi->total); ?> m3</td>
 						<td> <?php echo e($vehi->costo_acarreo); ?></td>
 						<td></td>
 						<td>

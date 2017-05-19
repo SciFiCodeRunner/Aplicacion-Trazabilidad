@@ -45,7 +45,7 @@
 							<td>{{$abs->volumen_excavado_teorico}} {{'M3'}}</td>
 							<!--volumen transportado-->
 							<td>{{$abs->volumenLlenado}} {{'M3'}}</td>
-							<td>{{$abs->volumenExcavado }} {{'M3'}} </td>
+							<td>{{$abs->volumenExcavado}} {{'M3'}} </td>
 
 							<!--volumenCompactoTransportado-->
 
@@ -128,6 +128,7 @@
 						<th>Placa</th>
 						<th>Cantidad Material</th>	
 						<th>Material</th>
+					
 					</thead>
 					@foreach($abscisa2 as $abs)
 					<tr>
@@ -137,6 +138,8 @@
 						<td>{{$abs->placa}}</td>
 						<td>{{$abs->cantidadMaterial}} {{'M3'}}</td>
 						<td>{{$abs->matnombre}}
+						
+						
 						</td>
 
 						
@@ -169,7 +172,6 @@
 				</table>	
 				{{$abscisa1->render()}}
 				{{$abscisa2->render()}}
-					{{$abscisa->render()}}
 			</div>
 			
 			

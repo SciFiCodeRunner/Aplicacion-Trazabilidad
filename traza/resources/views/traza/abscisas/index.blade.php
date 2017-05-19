@@ -3,7 +3,7 @@
 		<div class="row">
 			<div class= "col-lg-8 col-md-8 col-sm-8 col-xs-12">
 
-				<h3>Listado de Abscisas                                                                   <a href="abscisas/create"><button class="btn btn-success">Nueva Abscisa</button> 
+				<h3>Listado de Abscisas                                                         <a href="abscisas/create"><button class="btn btn-success">Nueva Abscisa</button> 
 				</a></h3>
 
 				@include('traza.abscisas.search')
@@ -46,7 +46,7 @@
 							<td>{{$abs->volumen_excavado_teorico}} {{'M3'}}</td>
 							<!--volumen transportado-->
 							<td>{{$abs->volumenLlenado}} {{'M3'}}</td>
-							<td>{{$abs->volumenExcavado }} {{'M3'}} </td>
+							<td>{{$abs->volumenExcavado}} {{'M3'}} </td>
 
 							<!--volumenCompactoTransportado-->
 
@@ -133,7 +133,6 @@
 							@endforeach
 						</table>	
 					</div>
-					{{$abscisa->render()}}
 
 				</div>
 			</div>

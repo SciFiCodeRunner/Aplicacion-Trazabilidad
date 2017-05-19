@@ -27,7 +27,7 @@
 						<td>{{$vehi->placa}}</td>
 						<td>{{$vehi->nombre}}</td>
 						<td>{{$vehi->cantidad_viajes}}
-						<td>{{$vehi->VolumenTransportado}} m3</td>
+						<td>{{$vehi->total}} m3</td>
 						<td> {{$vehi->costo_acarreo}}</td>
 						<td></td>
 						<td>

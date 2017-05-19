@@ -6,7 +6,8 @@
 -- Tiempo de generación: 17-05-2017 a las 05:41:30
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 5.6.30
-
+create database juego;
+use juego;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 

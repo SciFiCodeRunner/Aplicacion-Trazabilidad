@@ -128,6 +128,7 @@
 						<th>Placa</th>
 						<th>Cantidad Material</th>	
 						<th>Material</th>
+					
 					</thead>
 					<?php $__currentLoopData = $abscisa2; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $abs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 					<tr>
@@ -138,6 +139,8 @@
 						<td><?php echo e($abs->cantidadMaterial); ?> <?php echo e('M3'); ?></td>
 						<td><?php echo e($abs->matnombre); ?>
 
+						
+						
 						</td>
 
 						
@@ -172,8 +175,6 @@
 				<?php echo e($abscisa1->render()); ?>
 
 				<?php echo e($abscisa2->render()); ?>
-
-					<?php echo e($abscisa->render()); ?>
 
 			</div>
 			
