@@ -22,8 +22,8 @@ class AbscisaController extends Controller
 			if ($query!='') {
 				$abscisa3= DB::select(DB::raw("SELECT
 					abs.idAbscisa ,abs.nombre,abs.volumen_llenado_teorico,abs.volumen_excavado_teorico,abs.volumen_llenado_obra,abs.volumen_excavado_obra,
-					CASE WHEN (SELECT COUNT(*) FROM vehiculo_transporte_material AS vtm WHERE vtm.id_abscisa_cargue=abs.idAbscisa)>0 THEN (SELECT SUM(vtm.cantidadMaterial) FROM vehiculo_transporte_material AS vtm WHERE vtm.id_abscisa_cargue=abs.idAbscisa) ELSE 0 END AS volumenLlenado,
-					CASE WHEN (SELECT COUNT(*) FROM vehiculo_transporte_material AS vtm WHERE vtm.id_abscisa_descargue=abs.idAbscisa)>0 THEN (SELECT SUM(vtm.cantidadMaterial) FROM vehiculo_transporte_material AS vtm WHERE vtm.id_abscisa_descargue=abs.idAbscisa) ELSE 0 END AS volumenExcavado
+					CASE WHEN (SELECT COUNT(*) FROM vehiculo_transporte_material AS vtm WHERE vtm.id_abscisa_cargue=abs.idAbscisa)>0 THEN (SELECT SUM(vtm.cantidadMaterial) FROM vehiculo_transporte_material AS vtm WHERE vtm.id_abscisa_cargue=abs.idAbscisa) ELSE 0 END AS volumenExcavado,
+					CASE WHEN (SELECT COUNT(*) FROM vehiculo_transporte_material AS vtm WHERE vtm.id_abscisa_descargue=abs.idAbscisa)>0 THEN (SELECT SUM(vtm.cantidadMaterial) FROM vehiculo_transporte_material AS vtm WHERE vtm.id_abscisa_descargue=abs.idAbscisa) ELSE 0 END AS volumenLlenado
 
 					FROM abscisas AS abs  WHERE abs.idAbscisa LIKE '%$query%' OR abs.nombre LIKE '%$query%'"));
 
