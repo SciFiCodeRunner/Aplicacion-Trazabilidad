@@ -55,18 +55,6 @@
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
-						<label for="volumen_transportado">Volumen transportado</label>
-						<input type="text" name="volumen_transportado" 
-							value="{{$vehiculo->volumen_transportado}}" 
-
-						class="form-control" placeholder="volumenTransportado..">
-
-					</div>
-				</div>
-
-
-				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-					<div class="form-group">
 						<label>Empresa</label>
 						<select name="Empresa_idEmpresa" class="form-control"> 
 							@foreach ($empresa as $emp)

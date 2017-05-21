@@ -16,7 +16,6 @@
 						<th>Vehiculo</th>
 						<th>Conductor</th>
 						<th>Cantidad de viajes</th>
-						<th>Volumen transportado</th>
 						<th>Costo Acarreo </th>
 						<th>PagoTransporte</th>
 						<th>opcion</th>
@@ -27,12 +26,17 @@
 						<td><?php echo e($vehi->nombre); ?></td>
 						<td><?php echo e($vehi->cantidad_viajes); ?>
 
-						<td><?php echo e($vehi->total); ?> m3</td>
-						<td> <?php echo e($vehi->costo_acarreo); ?></td>
-						<td></td>
-						<td>
-							<a href=""><button type="submit" class="btn btn" value="<?php echo e($vehi->placa); ?>" name="searchText" ">Detalle</button></a>	<br>
-							</td>
+						<td> <?php echo e($vehi->costo_acarreo); ?> $</td>
+							<td><?php echo e($vehi->total); ?> $</td>
+		<td>
+								<?php echo Form::open(array('url'=>'traza/listas','method'=>'GET','autocomplete'=>'off','role'=>'search')); ?>
+
+
+								<a href=""><button type="submit" class="btn btn" value="<?php echo e($vehi->idVehiculo); ?>" name="searchText" ">Detalle</button></a>	<br>
+								
+								<?php echo e(Form:: close()); ?>
+
+								</td>
 					</tr>
 					<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 				</table>	

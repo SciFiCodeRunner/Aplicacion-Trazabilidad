@@ -57,7 +57,6 @@ class VehiculoController extends Controller
 		$vehiculo->volumen_transportado=$request->get('volumen_transportado');
 		$vehiculo->Choferes_idChofer=$request->get('Choferes_idChofer');
 		$vehiculo->Empresa_idEmpresa=$request->get('Empresa_idEmpresa');
-		$vehiculo->estado=$request->get('estado');
 		$vehiculo->update();
 		return Redirect::to('traza/vehiculos');
 		
