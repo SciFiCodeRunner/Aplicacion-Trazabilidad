@@ -5,7 +5,11 @@ namespace Trazabilidad\Http\Controllers;
 use Illuminate\Http\Request;
 use Trazabilidad\Http\Requests;
 use Trazabilidad\VehiculoTransporte;
+use Trazabilidad\Material;
+use Trazabilidad\Vehiculo;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Collection as Collection;
+use Trazabilidad\Http\Requests\MaterialFormRequest;
 use
 Trazabilidad\Http\Requests\VehiculoTransporteFormRequest;
 use DB;
@@ -24,9 +28,10 @@ class VehiculoTransporteController extends Controller
 			->join('materiales as mat','vh.idMaterial','=','mat.idMaterial')
 			->join('abscisas as abs','abs.idAbscisa','=','vh.id_abscisa_cargue')
 			->join('abscisas as abs2','abs2.idAbscisa','=','vh.id_abscisa_descargue')
-			->select('vt.placa as placa','vh.fecha','vh.numeroRecibo','vh.observaciones','mat.nombre as material','abs.nombre as abscargue','abs2.nombre as absdescargue','vh.cantidadMaterial')
+			->select('vt.placa as placa','vh.fecha','numeroRecibo','vh.observaciones','mat.nombre as material','abs.nombre as abscargue','abs2.nombre as absdescargue','vh.cantidadMaterial','estadoTrans')
 			->where('vh.numeroRecibo','LIKE','%'.$query.'%')
-
+	        ->where('vh.estadoTrans','=',1)
+	        ->orderBy('vh.fecha','asc')
 			->paginate(1000000);
 			return view('traza.vehiculosTransporte.index',["vehiculos"=>$vehiculos,"searchText"=>$query]);
 		}
@@ -42,9 +47,7 @@ class VehiculoTransporteController extends Controller
 	public function store(VehiculoTransporteFormRequest $request){
 
 		$vehiculo= new VehiculoTransporte;
-		$date = Carbon::now('America/Bogota');
-		$date->format('d-m-Y');
-		$vehiculo->fecha=$date->toDateTimeString();
+		$vehiculo->fecha=$request->get('fecha');
 		$vehiculo->numeroRecibo=$request->get('numeroRecibo');
 		$vehiculo->observaciones=$request->get('observaciones');
 		$categorias = $request->input("idVehiculo");
@@ -76,6 +79,8 @@ class VehiculoTransporteController extends Controller
 		
 	}public function destroy($id){
 		$vehiculo=VehiculoTransporte::findOrFail($id);
+			DB::update("update vehiculos_transporte SET cantidad_viajes=cantidad_viajes-1 where idVehiculo=$vehiculo->idVehiculo");
+		$vehiculo->estadoTrans=0;
 		$vehiculo->update();
 		return Redirect::to('traza/vehiculosTransporte');
 		
@@ -86,11 +91,19 @@ class VehiculoTransporteController extends Controller
 	}
 
 	public function edit($id){
+$vehiculoTransMaterial=VehiculoTransporte::findOrFail($id);
+/*var_dump($vehiculoTransMaterial);
+ dd($vehiculoTransMaterial);*/
+$material=Material::findOrFail($vehiculoTransMaterial->idMaterial);
+$vehiculo=Vehiculo::findOrFail($vehiculoTransMaterial->idVehiculo);
+/*var_dump($vehiculo);
+ dd($vehiculo);*/
 		$materiales=DB::table('materiales')->get();
 		$empresas= DB::table('empresas')->get();
 		$abscisa=DB::table('abscisas')->get();
 		$vehiculos=DB::table('vehiculos_transporte')->get();
-		return view('traza.vehiculosTransporte.edit',["materiales"=>$materiales,"abscisas"=>$abscisa,"vehiculo"=>VehiculoTransporte::findOrFail($id),"vehiculos"=>$vehiculos]);
+
+		return view('traza.vehiculosTransporte.edit',["materiales"=>$materiales,"abscisas"=>$abscisa,"vehiculo"=>VehiculoTransporte::findOrFail($id),"vehiculos"=>$vehiculos,"material"=>$material,"vehiculoCombo"=>$vehiculo]);
 
 		
 	}

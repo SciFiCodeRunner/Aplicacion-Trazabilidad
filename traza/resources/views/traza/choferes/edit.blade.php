@@ -30,7 +30,7 @@
 					<div class="form-group">
 						<label for="cedula">Cedula
 						</label>
-						<input type="text" name="cedula" class="form-control" 	value="{{$chofer->cedula}}" 
+						<input type="text" name="cedula"  pattern="[0-9]{1,15}" class="form-control" 	value="{{$chofer->cedula}}" 
 
 						placeholder="Cedula...">
 
@@ -38,8 +38,8 @@
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
-						<label for="telefono">Telefono</label>
-						<input type="text" name="telefono" class="form-control" 	value="{{$chofer->telefono}}" 
+						<label for="telefono">Teléfono</label>
+						<input type="text" name="telefono"  pattern="[0-9]{1,15}" class="form-control" 	value="{{$chofer->telefono}}" 
 
 						placeholder="volumen...">
 
@@ -47,7 +47,7 @@
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
-						<label for="direccion">Direccion</label>
+						<label for="direccion">Dirección</label>
 						<input type="text" name="direccion" class="form-control" 	value="{{$chofer->direccion}}" 
 
 						placeholder="direccion...">

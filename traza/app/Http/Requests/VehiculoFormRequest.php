@@ -24,8 +24,6 @@ class VehiculoFormRequest extends Request{
             'placa'=>'required|max:6',
 			'costo_acarreo'=>'required',
 			'volumen_carga'=>'required|max:10',
-            'cantidad_viajes'=>'required',
-            'volumen_transportado'=>'required',
             'Choferes_idChofer'=>'required',
             'Empresa_idEmpresa'=>'required'
         ];

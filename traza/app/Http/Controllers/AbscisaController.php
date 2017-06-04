@@ -25,7 +25,7 @@ class AbscisaController extends Controller
 					CASE WHEN (SELECT COUNT(*) FROM vehiculo_transporte_material AS vtm WHERE vtm.id_abscisa_cargue=abs.idAbscisa)>0 THEN (SELECT SUM(vtm.cantidadMaterial) FROM vehiculo_transporte_material AS vtm WHERE vtm.id_abscisa_cargue=abs.idAbscisa) ELSE 0 END AS volumenExcavado,
 					CASE WHEN (SELECT COUNT(*) FROM vehiculo_transporte_material AS vtm WHERE vtm.id_abscisa_descargue=abs.idAbscisa)>0 THEN (SELECT SUM(vtm.cantidadMaterial) FROM vehiculo_transporte_material AS vtm WHERE vtm.id_abscisa_descargue=abs.idAbscisa) ELSE 0 END AS volumenLlenado
 
-					FROM abscisas AS abs  WHERE abs.idAbscisa LIKE '%$query%' OR abs.nombre LIKE '%$query%'"));
+					FROM abscisas AS abs  WHERE abs.idAbscisa LIKE '%$query%' or abs.nombre LIKE '%$query%' "));
 
 
 				$abscisa2= DB::table('abscisas as abs')
@@ -57,7 +57,7 @@ class AbscisaController extends Controller
 					CASE WHEN (SELECT COUNT(*) FROM vehiculo_transporte_material AS vtm WHERE vtm.id_abscisa_cargue=abs.idAbscisa)>0 THEN (SELECT SUM(vtm.cantidadMaterial) FROM vehiculo_transporte_material AS vtm WHERE vtm.id_abscisa_cargue=abs.idAbscisa) ELSE 0 END AS volumenLlenado,
 					CASE WHEN (SELECT COUNT(*) FROM vehiculo_transporte_material AS vtm WHERE vtm.id_abscisa_descargue=abs.idAbscisa)>0 THEN (SELECT SUM(vtm.cantidadMaterial) FROM vehiculo_transporte_material AS vtm WHERE vtm.id_abscisa_descargue=abs.idAbscisa) ELSE 0 END AS volumenExcavado
 
-					FROM abscisas AS abs  WHERE abs.idAbscisa LIKE '%$query%'"));
+					FROM abscisas AS abs  WHERE abs.idAbscisa LIKE '%$query%' and abs.estadoAbscisa=1"));
 
 
 				
@@ -66,7 +66,15 @@ class AbscisaController extends Controller
 		}
 	}
 	public function create(){
+	
+	
 		return view("traza.abscisas.create");
+		
+	}
+	public function createCantera(){
+	
+	
+		return view("traza.abscisas.createCantera");
 		
 	}
 	public function store(AbscisaFormRequest $request){
@@ -75,6 +83,13 @@ class AbscisaController extends Controller
 		$abscisa->descripcion=$request->get('descripcion');
 		$abscisa->volumen_llenado_teorico=$request->get('volumen_llenado_teorico');
 		$abscisa->volumen_excavado_teorico=$request->get('volumen_excavado_teorico');
+		$abscisa->volumen_excavado_obra=$request->get('volumen_excavado_obra');
+		$abscisa->volumen_llenado_obra=$request->get('volumen_excavado_teorico');
+		$abscisa->coef_real_llenado=$request->get('coef_real_llenado');
+		$abscisa->coef_real_excavado=$request->get('coef_real_excavado');
+		$abscisa->estadoAbscisa=$request->get('estadoAbscisa');
+
+
 		$abscisa->save();
 		return Redirect::to('traza/abscisas');
 		
@@ -82,9 +97,15 @@ class AbscisaController extends Controller
 	public function update(AbscisaFormRequest $request,$id){
 		$abscisa=Abscisa::findOrFail($id);
 		$abscisa->nombre=$request->get('nombre');
+		$abscisa->descripcion=$request->get('descripcion');
 		$abscisa->volumen_llenado_teorico=$request->get('volumen_llenado_teorico');
 		$abscisa->volumen_excavado_teorico=$request->get('volumen_excavado_teorico');
-		$abscisa->descripcion=$request->get('descripcion');
+		$abscisa->volumen_excavado_obra=$request->get('volumen_excavado_obra');
+		$abscisa->volumen_llenado_obra=$request->get('volumen_excavado_teorico');
+		$abscisa->coef_real_llenado=$request->get('coef_real_llenado');
+		$abscisa->coef_real_excavado=$request->get('coef_real_excavado');
+		$abscisa->estadoAbscisa=$request->get('estadoAbscisa');
+
 		$abscisa->update();
 		return Redirect::to('traza/abscisas');
 		

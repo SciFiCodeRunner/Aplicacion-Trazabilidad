@@ -16,8 +16,8 @@
 						
 						<th>Nombre</th>
 						<th>Cedula</th>
-						<th>Telefono</th>
-						<th>Direccion</th>
+						<th>Teléfono</th>
+						
 						<th>Conduce</th>	
 						<th>Opciones</th>	
 					</thead>
@@ -25,7 +25,7 @@
 						<td>{{$chofer->nombre}}</td>
 						<td>{{$chofer->cedula}}</td>
 						<td>{{$chofer->telefono}}</td>
-						<td>{{$chofer->direccion}}</td>
+						
 						<td>{{$chofer->placa}}</td>
 						<td>
 							<a href="{{URL::action('ConductorController@edit',$chofer->idChofer)}}">

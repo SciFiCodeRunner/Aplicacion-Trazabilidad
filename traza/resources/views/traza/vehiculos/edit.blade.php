@@ -3,7 +3,7 @@
 <div class="row">
 	<div class="col-lg-8 col-md-6 col-sm-6 col-xs-12">
 		<h3>
-			Editar Vehiculo Con Placa  :{{$vehiculo->placa}}</h3>
+			Editar Vehículo Con Placa  :{{$vehiculo->placa}}</h3>
 			@if (count($errors)> 0 )
 			<div class="alert alert-danger">
 				<ul>
@@ -30,7 +30,7 @@
 					<div class="form-group">
 						<label for="costo_acarreo">Costo acarreo 
 						</label>
-						<input type="text" name="costo_acarreo" class="form-control" 	value="{{$vehiculo->costo_acarreo}}" 
+						<input type="text" name="costo_acarreo" pattern="([0-9]){0,15}([0-9]{0,15}.[0-9]{0,15})" class="form-control" 	value="{{$vehiculo->costo_acarreo}}" 
 
 						placeholder="Costo...">
 
@@ -39,7 +39,7 @@
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
 						<label for="volumen_carga">Volumen de carga</label>
-						<input type="text" name="volumen_carga" class="form-control" 	value="{{$vehiculo->volumen_carga}}" 
+						<input type="text" name="volumen_carga" pattern="([0-9]){0,10}([0-9]{0,10}.[0-9]{0,10})" class="form-control" 	value="{{$vehiculo->volumen_carga}}" 
 
 						placeholder="volumen...">
 

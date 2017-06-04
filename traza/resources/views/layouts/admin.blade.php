@@ -30,17 +30,18 @@
       <header class="main-header">
 
         <!-- Logo -->
-        <a href="index2.html" class="logo">
+        <a href="http://localhost:8000/traza/abscisas"> <href="index2.html" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><b></b></span>
+
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>Trazabilidad</b></span>
+          <span class="logo-lg"><b>Trazabilidad</b>
+          </span>
         </a>
 
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
           <!-- Sidebar toggle button-->
-          <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
             <span class="sr-only">Navegación</span>
           </a>
           <!-- Navbar Right Menu -->
@@ -59,8 +60,8 @@
                   <li class="user-header">
                     
                     <p>
-                      Uniquindio software3 - Desarrollando Software
-                      <small>Cristian Soto Juan Felipe Salcedo para obra ingenieria civil</small>
+                      ´Giovanny 
+                      <small> para obra ingenieria civil</small>
                     </p>
                   </li>
                   
@@ -93,13 +94,13 @@
               <a href="#">
             
 			  <i class="fa fa-cogs" aria-hidden="true"></i>
-                <span>Produccion General</span>
+                <span>General</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class=" treeview active-menu">
                 <li><a href="{{url('traza/listas')}}"><i class="fa fa-circle-o "></i>Vehiculos</a></li>
-                  <li><a href="{{url('traza/listas')}}"><i class="fa fa-circle-o "></i>Canteras</a></li>
-                    <li><a href="{{url('traza/listas')}}"><i class="fa fa-circle-o "></i>Material</a></li>
+                  <li><a href="{{url('traza/canteras')}}"><i class="fa fa-circle-o "></i>Canteras</a></li>
+                    <li><a href="{{url('traza/materialProduccion')}}"><i class="fa fa-circle-o "></i>Material</a></li>
               </ul>
             </li>
             <li class=" treeview active">
@@ -122,7 +123,8 @@
               </a>
               <ul class=" treeview-menu">
                 <li><a href="{{url('traza/choferes')}}"><i class="fa fa-circle-o"></i>Conductores</a></li>
-                <li><a href="{{url('traza/vehiculos')}}"><i class="fa fa-circle-o"></i>Vehiculos de carga</a> <li><a href="{{url('traza/vehiculosTransporte')}}"><i class="fa fa-circle-o"></i>Transporte en obra</a>
+                <li><a href="{{url('traza/vehiculos')}}"><i class="fa fa-circle-o"></i>Coches de carga</a> </li>
+                <li><a href="{{url('traza/vehiculosTransporte')}}"><i class="fa fa-circle-o"></i>Transporte en obra</a>
                 </li>
               </ul>
             </li>
@@ -136,29 +138,21 @@
                 <li><a href="{{url('traza/materiales')}}"><i class="fa fa-circle-o"></i>material</a></li>
                
               </ul>
-            </li>      
+            </li>  
+
             <li class=" treeview active">
               <a href="#">
-                <i class="fa fa-folder"></i> <span>Acceso</span>
-                <i class="fa fa-angle-left pull-right"></i>
+               <i class="fa fa-steam-square" aria-hidden="true"></i>
+                <span>Empresas</span>
+                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class=" treeview-menu">
-                <li><a href=""><i class="fa fa-circle-o"></i> Usuarios</a></li>
-                
+                <li><a href="{{url('traza/empresas')}}"><i class="fa fa-circle-o"></i>Registro</a></li>
+               
               </ul>
-            </li>
-             <li>
-              <a href="#">
-                <i class="fa fa-plus-square"></i> <span>Ayuda</span>
-                <small class="label pull-right bg-red">PDF</small>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="fa fa-info-circle"></i> <span>Acerca De...</span>
-                <small class="label pull-right bg-yellow">63+1</small>
-              </a>
-            </li>
+            </li>          
+
+            
                         
           </ul>
         </section>
@@ -180,11 +174,9 @@
             <div class="col-md-12">
               <div class="box">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Sistema de informacion para la trazabilidad de una obra lineal</h3>
+                  <h3 class="box-title">Software  para manejar  la trazabilidad de una obra lineal</h3>
                   <div class="box-tools pull-right">
-                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                     
-                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
                   </div>
                 </div>
                 <!-- /.box-header -->
@@ -209,9 +201,8 @@
       <!--Fin-Contenido-->
       <footer class="main-footer">
         <div class="pull-right hidden-xs">
-          <b>Version</b>1.0
+          <b>Version</b>7.0
         </div>
-        <strong>Copyright 2017-2018 <a href="61+3society.com">63+1 society</a>.</strong> All rights reserved.
       </footer>
 
       

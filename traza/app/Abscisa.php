@@ -14,9 +14,7 @@ class Abscisa extends Model
 	
 	
 	protected $fillable=[
-	'nombre',
-	'volumen_llenado_teorico',
-	'volumen_excavado_teorico',
-	'descripcion'
+	'nombre'
+
 	];
 }

@@ -17,8 +17,7 @@ class Conductor extends Model
 	protected $fillable=[
 	'nombre',
 	'cedula',
-	'telefono',
-	'direccion'
+	'telefono'
 	];
     //
 }

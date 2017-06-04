@@ -28,7 +28,7 @@
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
-						<label for="descripcion">Descripcion
+						<label for="descripcion">Descripción
 						</label>
 						<input type="text" name="descripcion" class="form-control" 	value="{{$material->descripcion}}" 
 
@@ -38,8 +38,8 @@
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
-						<label for="compactacion">Compactacion</label>
-						<input type="text" name="compactacion" class="form-control" 	value="{{$material->compactacion}}" 
+						<label for="compactacion">Compactación</label>
+						<input type="text" name="compactacion" pattern="([0-9]){0,10}([0-9]{0,10}.[0-9]{0,10})" class="form-control" 	value="{{$material->compactacion}}" 
 
 						placeholder="volumen...">
 
@@ -48,7 +48,7 @@
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
 						<label for="precio">Precio</label>
-						<input type="text" name="precio" class="form-control" 	value="{{$material->precio}}" 
+						<input type="text" name="precio" pattern="([0-9]){0,10}([0-9]{0,10}.[0-9]{0,10})"  class="form-control" 	value="{{$material->precio}}" 
 
 						placeholder="precio...">
 					</div>

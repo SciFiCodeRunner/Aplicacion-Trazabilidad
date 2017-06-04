@@ -27,8 +27,7 @@ class ConductorFormRequest extends FormRequest
         return [
         'nombre'=> 'required|max:40',
         'cedula'=> 'required|max:12',
-        'telefono'=>'required|max:10',
-        'direccion'=>'required|max:40'
+        'telefono'=>'required|max:10'
         ];
     }
 }

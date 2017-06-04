@@ -68,6 +68,21 @@
 						placeholder="vol...">
 					</div>
 				</div>
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+					<div class="form-group">
+						<label for="volumen_llenado_obra">Volumen Obra llenado</label>
+						<input type="text" name="volumen_llenado_obra" value="<?php echo e($abscisa->volumen_llenado_obra); ?>" class="form-control" placeholder="volumen llenado/obra...">
+
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+					<div class="form-group">
+						<label for="volumen_excavado_obra">Volumen Obra corte</label>
+						<input type="text"  name="volumen_excavado_obra" value="<?php echo e($abscisa->volumen_excavado_obra); ?>" class="form-control" placeholder="volumen exc/obra...">
+
+					</div>
+				</div>
+				
 
 
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">

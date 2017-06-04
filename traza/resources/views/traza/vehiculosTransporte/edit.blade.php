@@ -14,7 +14,7 @@
 			</div>
 			@endif
 
-			{!!Form::model($vehiculo,['method'=>'PATCH','action'=>['VehiculoTransporteController@update',$vehiculo->idVehiculo]])!!}
+			{!!Form::model($vehiculo,['method'=>'PATCH','action'=>['VehiculoTransporteController@update',$vehiculo->numeroRecibo]])!!}
 			{{Form::token()}}
 			<div class="row">
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -33,8 +33,10 @@
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
-						<label>Vehiculo</label>
+						<label>Vehículo</label>
 						<select name="idVehiculo" class="form-control">
+						<option value="{{$vehiculoCombo->idVehiculo}}"> {{$vehiculoCombo->placa}}
+							</option>
 							@foreach ($vehiculos as $vehi)
 							<option value="{{$vehi->idVehiculo}}"> {{$vehi->placa}}
 							</option>
@@ -48,7 +50,10 @@
 					<div class="form-group">
 						<label>Material</label>
 						<select name="idMaterial" class="form-control">
+						<option value="{{$material->idMaterial}}"> {{$material->nombre}}
+							</option>
 							@foreach ($materiales as $mat)
+
 							<option value="{{$mat->idMaterial}}"> {{$mat->nombre}}
 							</option>
 							@endforeach
@@ -86,7 +91,7 @@
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
 						<label for="cantidadMaterial">Cantidad Material</label>
-						<input type="text" name="cantidadMaterial" class="form-control" placeholder="cantidad...">
+						<input type="text" name="cantidadMaterial" pattern="([0-9]){0,10}([0-9]{0,10}.[0-9]{0,10})" class="form-control" placeholder="cantidad...">
 
 					</div>
 				</div>

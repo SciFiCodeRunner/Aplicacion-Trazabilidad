@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Informacion Vehiculo</title>
+	<title>Información Vehiculo</title>
 </head>
 <body>
 <form  action="" method="" enctype="multipart/form-data">

@@ -98,7 +98,7 @@
               </a>
               <ul class=" treeview active-menu">
                 <li><a href="<?php echo e(url('traza/listas')); ?>"><i class="fa fa-circle-o "></i>Vehiculos</a></li>
-                  <li><a href="<?php echo e(url('traza/listas')); ?>"><i class="fa fa-circle-o "></i>Canteras</a></li>
+                  <li><a href="<?php echo e(url('traza/canteras')); ?>"><i class="fa fa-circle-o "></i>Canteras</a></li>
                     <li><a href="<?php echo e(url('traza/listas')); ?>"><i class="fa fa-circle-o "></i>Material</a></li>
               </ul>
             </li>

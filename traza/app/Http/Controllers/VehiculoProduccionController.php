@@ -23,11 +23,12 @@ class VehiculoProduccionController extends Controller
 				->join('vehiculo_transporte_material as vtm','vt.idVehiculo','=','vtm.idVehiculo')
 				->join('choferes as cho','cho.idChofer','=','vt.Choferes_idChofer')
 				->select('vt.idVehiculo','vt.placa','vtm.fecha','vtm.observaciones','vtm.cantidadMaterial','vt.costo_acarreo','vt.cantidad_viajes','vt.volumen_transportado','cho.nombre as nombre',DB::raw('vt.cantidad_viajes*vt.costo_acarreo as total'))
-				->where('vt.idVehiculo','LIKE','%'.$query.'%')
-				->where('vt.estado','=',1)
-				->orderBy('vt.idVehiculo','asc')
-				->groupBy('vt.idVehiculo')
+                       ->where('vt.estado','=',1)
+				
+				->where('vt.placa','LIKE','%'.$query.'%')
+
 				->orderBy('vt.placa','asc')
+				->groupBy('vt.idVehiculo')
 				->paginate(10000);
 
 				$vehiculos2=DB::table('vehiculo_transporte_material as vh')
@@ -36,7 +37,8 @@ class VehiculoProduccionController extends Controller
 			->join('abscisas as abs','abs.idAbscisa','=','vh.id_abscisa_cargue')
 			->join('abscisas as abs2','abs2.idAbscisa','=','vh.id_abscisa_descargue')
 			->select('vt.placa as placa','vh.fecha','vh.numeroRecibo','vh.observaciones','mat.nombre as material','abs.nombre as abscargue','abs2.nombre as absdescargue','vh.cantidadMaterial')
-			->where('vh.idVehiculo','LIKE','%'.$query.'%')
+			->where('vt.estado','=',1)
+			->where('vt.placa','LIKE','%'.$query.'%')
 				->paginate(1000); 
 
 				return view('traza.listas.index2',["vehiculos2"=>$vehiculos2,"vehiculos"=>$vehiculos1,"searchText"=>$query]);
@@ -45,8 +47,9 @@ class VehiculoProduccionController extends Controller
 				->join('vehiculo_transporte_material as vtm','vt.idVehiculo','=','vtm.idVehiculo')
 				->join('choferes as cho','cho.idChofer','=','vt.Choferes_idChofer')
 				->select('vt.idVehiculo','vt.placa','vtm.fecha','vtm.observaciones','vtm.cantidadMaterial','vt.costo_acarreo','vt.cantidad_viajes','vt.volumen_transportado','cho.nombre as nombre',DB::raw('vt.cantidad_viajes*vt.costo_acarreo as total'))
-				->where('vt.idVehiculo','LIKE','%'.$query.'%')
 				->where('vt.estado','=',1)
+				->where('vt.placa','LIKE','%'.$query.'%')
+				->orwhere('vt.idVehiculo','LIKE','%'.$query.'%')
 				->groupBy('vt.idVehiculo')
 				->orderBy('vt.placa','asc')
 				->paginate(10000);
@@ -58,6 +61,6 @@ class VehiculoProduccionController extends Controller
 		
 		
 	}
-	
+
 
 }

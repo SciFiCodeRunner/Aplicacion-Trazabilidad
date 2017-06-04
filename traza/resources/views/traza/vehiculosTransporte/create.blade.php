@@ -17,23 +17,24 @@
 			{!!Form::open(array('url'=>'traza/vehiculosTransporte','method'=>'POST','autocomplete'=>'off','files'=>'true'))!!}
 			{{Form::token()}}
 			<div class="row">
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+					<div class="form-group">
+						<label for="fecha">Fecha</label><br>
+						<input type="date" name="fecha">
+					</div>
+				   </div>
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
 						<label for="numeroRecibo">numeroRecibo</label>
-						<input type="text" name="numeroRecibo" class="form-control" placeholder="Recibo...">
+						<input type="text" name="numeroRecibo" value="Nº"class="form-control" placeholder="Recibo...">
 
 					</div>
 				</div>
-				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-					<div class="form-group">
-						<label for="observaciones">Observaciones
-							<textarea class="form-control" rows="2" name="observaciones" placeholder="Observaciones..."></textarea>
-
-						</div>
-					</div>
+					
+				
 					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 						<div class="form-group">
-							<label>Vehiculo</label>
+							<label>Vehículo</label>
 							<select name="idVehiculo" class="form-control">
 								@foreach ($vehiculos as $vehi)
 								<option value="{{$vehi->idVehiculo}}"> {{$vehi->placa}}
@@ -86,7 +87,14 @@
 					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 						<div class="form-group">
 							<label for="cantidadMaterial">Cantidad Material</label>
-							<input type="text" name="cantidadMaterial" class="form-control" placeholder="cantidad...">
+							<input type="text" name="cantidadMaterial" pattern="([0-9]){0,10}([0-9]{0,10}.[0-9]{0,10})"  class="form-control" placeholder="cantidad...">
+
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+					<div class="form-group">
+						<label for="observaciones">Observaciones
+							<textarea class="form-control" rows="2" name="observaciones" placeholder="Observaciones..."></textarea>
 
 						</div>
 					</div>

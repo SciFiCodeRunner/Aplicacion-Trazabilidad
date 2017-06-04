@@ -20,7 +20,7 @@ public function __construct(){
 			$query=trim($request->get('searchText'));
 			$choferes=DB::table('choferes')
 			->leftJoin('vehiculos_transporte as vt','choferes.idChofer','=','vt.Choferes_idChofer')
-			->select('idChofer','nombre','cedula','telefono','direccion','vt.placa as placa')
+			->select('idChofer','nombre','cedula','telefono','vt.placa as placa')
 			->where('estadoChofer','=',1)
 		
 			->paginate(100);
@@ -37,7 +37,7 @@ public function __construct(){
 		$chofer->nombre=$request->get('nombre');
 		$chofer->cedula=$request->get('cedula');
 		$chofer->telefono=$request->get('telefono');
-		$chofer->direccion=$request->get('direccion');
+		
 		$chofer->save();
 		return Redirect::to('traza/choferes');
 		
@@ -47,7 +47,7 @@ public function __construct(){
 		$chofer->nombre=$request->get('nombre');
 		$chofer->cedula=$request->get('cedula');
 		$chofer->telefono=$request->get('telefono');
-		$chofer->direccion=$request->get('direccion');
+		
 			$chofer->update();
 		return Redirect::to('traza/choferes');
 		

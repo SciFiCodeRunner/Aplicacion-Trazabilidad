@@ -27,26 +27,17 @@
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
 						<label for="cedula">Cedula</label>
-						<input type="text" name="cedula" class="form-control" placeholder="Cedula...">
+						<input type="text" name="cedula"  pattern="[0-9]{1,15}"class="form-control" placeholder="Cedula...">
 
 					</div>
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
-						<label for="telefono">Telefono</label>
-						<input type="text" name="telefono" class="form-control" placeholder="telefono...">
+						<label for="telefono">Teléfono</label>
+						<input type="text" name="telefono" pattern="[0-9]{1,15}"class="form-control" placeholder="telefono...">
 
 					</div>
-				</div>
-				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-					<div class="form-group">
-						<label for="direccion">Direccion</label>
-						<input type="text" name="direccion" class="form-control" placeholder="direccion...">
-
-					</div>
-				</div>
-				
-			
+				</div>		
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 				<div class="form-group">
 					<label>Opciones </label>

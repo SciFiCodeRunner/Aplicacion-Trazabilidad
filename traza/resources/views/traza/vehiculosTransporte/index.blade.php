@@ -14,7 +14,7 @@
 					<thead class="bg-info">
 						<th>Recibo</th>
 						<th>Fecha</th>
-						<th>Vehiculo</th>
+						<th>Vehículo</th>
 						<th>Material</th>
 						<th>Abscisa Cargue</th>
 						<th>Abscisa Descargue</th>

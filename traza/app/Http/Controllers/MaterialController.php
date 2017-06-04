@@ -29,6 +29,7 @@ class MaterialController extends Controller
 		return view("traza.materiales.create");
 		
 	}
+
 	public function store(MaterialFormRequest $request){
 		$material= new Material;
 		$material->nombre=$request->get('nombre');

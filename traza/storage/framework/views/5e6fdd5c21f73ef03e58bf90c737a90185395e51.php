@@ -3,8 +3,7 @@
 		<div class="row">
 			<div class= "col-lg-8 col-md-8 col-sm-8 col-xs-12">
 
-				<h3>Listado de Abscisas                                                         <a href="abscisas/create"><button class="btn btn-success">Nueva Abscisa</button> 
-				</a></h3>
+				<h3>Listado de Abscisas <a href="abscisas/create"><button class="btn btn-success">Nueva Abscisa</button> <a href="<?php echo e(URL::to('createCantera')); ?>"><button class="btn btn-success">Nueva Cantera</button> 				</a></h3>
 
 				<?php echo $__env->make('traza.abscisas.search', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 			</div>
