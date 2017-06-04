@@ -1,0 +1,1 @@
+se necesita tener instalado composer para que corra laravel y la ruta del lanzador apuntar a donde esta el proyecto en el pc, ademas se debe tener instalado xammp 
