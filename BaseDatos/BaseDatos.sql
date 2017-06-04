@@ -3,11 +3,10 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 17-05-2017 a las 05:41:30
+-- Tiempo de generación: 04-06-2017 a las 20:44:51
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 5.6.30
-create database juego;
-use juego;
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
@@ -28,11 +27,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `abscisas` (
-  `descripcion` varchar(45) NOT NULL,
+  `descripcion` varchar(45) DEFAULT 'sin descripción',
   `idAbscisa` int(11) NOT NULL,
   `nombre` varchar(45) NOT NULL,
-  `volumen_llenado_teorico` decimal(10,0) NOT NULL DEFAULT '0',
-  `volumen_excavado_teorico` decimal(10,0) NOT NULL DEFAULT '0',
+  `volumen_llenado_teorico` decimal(10,2) NOT NULL DEFAULT '0.00',
+  `volumen_excavado_teorico` decimal(10,2) NOT NULL DEFAULT '0.00',
   `estadoAbscisa` tinyint(1) NOT NULL DEFAULT '1',
   `volumen_excavado_obra` decimal(10,2) NOT NULL DEFAULT '0.00',
   `volumen_llenado_obra` decimal(10,2) NOT NULL DEFAULT '0.00',
@@ -45,9 +44,7 @@ CREATE TABLE `abscisas` (
 --
 
 INSERT INTO `abscisas` (`descripcion`, `idAbscisa`, `nombre`, `volumen_llenado_teorico`, `volumen_excavado_teorico`, `estadoAbscisa`, `volumen_excavado_obra`, `volumen_llenado_obra`, `coef_real_excavado`, `coef_real_llenado`) VALUES
-('500m al lado del rio', 1, 'k0+100', '20', '10', 1, '22.00', '15.00', '0.00', '0.00'),
-('presenta mucha piedra caliza', 2, 'k0+200', '35', '40', 1, '37.00', '42.00', '0.00', '0.00'),
-('no presenta inconvenientes', 3, 'k0+300', '35', '40', 1, '0.00', '0.00', '0.00', '0.00');
+('E', 21, 'K0+100', '4.00', '1.00', 1, '2.00', '1.00', '3.00', '6.00');
 
 -- --------------------------------------------------------
 
@@ -59,7 +56,6 @@ CREATE TABLE `choferes` (
   `cedula` int(11) NOT NULL,
   `nombre` varchar(45) NOT NULL,
   `telefono` varchar(45) DEFAULT NULL,
-  `direccion` varchar(45) DEFAULT NULL,
   `idChofer` int(11) NOT NULL,
   `estadoChofer` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -68,24 +64,9 @@ CREATE TABLE `choferes` (
 -- Volcado de datos para la tabla `choferes`
 --
 
-INSERT INTO `choferes` (`cedula`, `nombre`, `telefono`, `direccion`, `idChofer`, `estadoChofer`) VALUES
-(45632, 'seebas cam', '35553', '123', 1, 0),
-(417932233, 'carlos andres', '736892', 'ciudadela moca', 2, 0),
-(873398289, 'alfonso lopez', '7936922', 'caminos campo', 3, 1),
-(939702739, 'andres prado', '73682833', 'caminos campo', 4, 1),
-(7937903, 'camilo triana', '94720823', 'mocawa 4 #6 esquina', 5, 1),
-(93792083, 'arnulfo pardo', '9289773', 'barrio 7 agosto mz 16 #16', 6, 1),
-(82698223, 'carlos enrique', '927923', 'colinitas 5#5', 7, 1),
-(9279232, 'armando casas', '765934', 'valles comfandi', 8, 1),
-(82693422, 'johany rivera', '09372932', 'corralitos campos km2', 9, 1),
-(83729823, 'juan carlos robledo', '97293023', 'barrio nuevo bolivar mz4 #29', 10, 1),
-(97233442, 'mike steven pulgarin', '31387634', 'barrio la selva mz 1#7', 11, 1),
-(1838932, 'cristian camilo', '87389322', 'barrio acacias mz 5 casa 5', 12, 1),
-(109308232, 'sebastian robledo', '87392323', 'barrio la selva 6# 7', 13, 1),
-(1039038023, 'j mario', '315689772', 'barrio simon bolivar carrera 34 #89', 14, 1),
-(198912312, 'elmo', '2920292', 'barrio militar', 15, 1),
-(9731233, 'andres verdana', '1980222', 'barrio jardin #6casa 7', 16, 1),
-(0, 'a', 'a', 'a', 17, 0);
+INSERT INTO `choferes` (`cedula`, `nombre`, `telefono`, `idChofer`, `estadoChofer`) VALUES
+(16721731, 'Juan Carlos Vargas', '3004231410', 20, 1),
+(7415310, 'Sebastian Salazar', '3204161514', 21, 1);
 
 -- --------------------------------------------------------
 
@@ -95,18 +76,22 @@ INSERT INTO `choferes` (`cedula`, `nombre`, `telefono`, `direccion`, `idChofer`,
 
 CREATE TABLE `empresas` (
   `idEmpresa` int(11) NOT NULL,
-  `nombre` varchar(45) NOT NULL
+  `nombre` varchar(45) NOT NULL,
+  `estadoEmpresa` int(11) NOT NULL DEFAULT '1',
+  `direccion` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `empresas`
 --
 
-INSERT INTO `empresas` (`idEmpresa`, `nombre`) VALUES
-(1, 'Camu'),
-(2, 'Argos'),
-(3, 'constructora occidente'),
-(4, 'arabia highs');
+INSERT INTO `empresas` (`idEmpresa`, `nombre`, `estadoEmpresa`, `direccion`) VALUES
+(1, 'Camu', 0, 'wd233'),
+(2, 'Argos', 0, ''),
+(3, 'constructora occidente', 0, ''),
+(8, 'Sin empresa', 0, 'no aplica'),
+(9, 'Latin Transportes', 1, 'Bogota Dc'),
+(10, 'Ceron Ingenieria', 1, 'Bogota Dc');
 
 -- --------------------------------------------------------
 
@@ -131,8 +116,10 @@ INSERT INTO `materiales` (`idMaterial`, `nombre`, `descripcion`, `compactacion`,
 (2, 'base', 'material en buen estado', '2', '70000'),
 (3, 'Sub-base', 'excelente', '2', '6855'),
 (4, 'filtrante', 'bien', '2', '89000'),
-(5, 'dsff', 'fsef', '0', '0'),
-(6, 'sub', 'piedra caliza', '10', '10');
+(5, 'terraplen', 'material', '2', '450000'),
+(6, 'materialComun', 'material', '2', '20000'),
+(7, 'pedraplen', 'material', '1', '87000'),
+(8, 'MaterialNuevo', 'buen estado', '2', '30000');
 
 -- --------------------------------------------------------
 
@@ -180,18 +167,8 @@ CREATE TABLE `vehiculos_transporte` (
 --
 
 INSERT INTO `vehiculos_transporte` (`placa`, `cantidad_viajes`, `volumen_carga`, `volumen_transportado`, `costo_acarreo`, `Empresa_idEmpresa`, `idVehiculo`, `Choferes_idChofer`, `estado`) VALUES
-('LYJ98A', 0, '2', '45', '78500', 1, 1, 13, 1),
-('kmx834', 0, '5', '0', '0', 1, 3, 1, 1),
-('mnu988', 0, '55', '58', '900000', 1, 5, 7, 0),
-('juy809', 0, '0', '0', '0', 1, 6, 12, 0),
-('mnr903', 0, '0', '0', '0', 1, 7, 10, 0),
-('ujh89', 0, '0', '0', '0', 1, 9, 15, 0),
-('klg423', 0, '0', '0', '0', 1, 10, 10, 1),
-('jhd884', 0, '0', '0', '0', 1, 11, 9, 0),
-('vrt654', 0, '0', '0', '0', 1, 12, 2, 1),
-('hiw777', 0, '0', '0', '0', 1, 13, 15, 1),
-('5432er', 0, '0', '0', '0', 1, 20, 2, 1),
-('aba987', 0, '0', '0', '0', 1, 21, 16, 1);
+('SQT825', 6, '15', NULL, '60000', 10, 19, 21, 1),
+('92928', NULL, '333', NULL, '33', 8, 22, 20, 1);
 
 -- --------------------------------------------------------
 
@@ -201,25 +178,23 @@ INSERT INTO `vehiculos_transporte` (`placa`, `cantidad_viajes`, `volumen_carga`,
 
 CREATE TABLE `vehiculo_transporte_material` (
   `fecha` date NOT NULL,
-  `numeroRecibo` int(11) NOT NULL,
+  `numeroRecibo` varchar(10) NOT NULL,
   `observaciones` varchar(45) DEFAULT NULL,
   `idVehiculo` int(11) NOT NULL,
   `idMaterial` int(11) NOT NULL,
   `id_abscisa_cargue` int(11) NOT NULL,
   `id_abscisa_descargue` int(11) NOT NULL,
-  `cantidadMaterial` decimal(10,0) NOT NULL
+  `cantidadMaterial` decimal(10,0) NOT NULL,
+  `estadoTrans` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `vehiculo_transporte_material`
 --
 
-INSERT INTO `vehiculo_transporte_material` (`fecha`, `numeroRecibo`, `observaciones`, `idVehiculo`, `idMaterial`, `id_abscisa_cargue`, `id_abscisa_descargue`, `cantidadMaterial`) VALUES
-('2017-05-12', 4, '2', 7, 4, 2, 1, '20'),
-('2017-05-12', 6, 'eeee', 1, 3, 2, 1, '10'),
-('2017-05-12', 44, 'bueno', 3, 1, 2, 1, '100'),
-('2017-05-12', 67, 'a', 1, 3, 1, 1, '13'),
-('2017-05-13', 77, 'maamsita me la como', 1, 6, 2, 3, '100');
+INSERT INTO `vehiculo_transporte_material` (`fecha`, `numeroRecibo`, `observaciones`, `idVehiculo`, `idMaterial`, `id_abscisa_cargue`, `id_abscisa_descargue`, `cantidadMaterial`, `estadoTrans`) VALUES
+('2017-06-22', 'Nº23', '32', 19, 3, 21, 21, '23', 1),
+('2017-06-22', 'Nº33', 'sdsd', 19, 6, 21, 21, '12', 1);
 
 --
 -- Índices para tablas volcadas
@@ -266,8 +241,13 @@ ALTER TABLE `user`
 --
 ALTER TABLE `vehiculos_transporte`
   ADD PRIMARY KEY (`idVehiculo`),
+  ADD UNIQUE KEY `Choferes_idChofer` (`Choferes_idChofer`),
+  ADD UNIQUE KEY `Choferes_idChofer_4` (`Choferes_idChofer`),
   ADD KEY `fk_Vehiculos_Transporte_Empresa1_idx` (`Empresa_idEmpresa`),
-  ADD KEY `fk_Vehiculos_Transporte_Choferes1_idx` (`Choferes_idChofer`);
+  ADD KEY `fk_Vehiculos_Transporte_Choferes1_idx` (`Choferes_idChofer`),
+  ADD KEY `Choferes_idChofer_2` (`Choferes_idChofer`),
+  ADD KEY `Choferes_idChofer_3` (`Choferes_idChofer`),
+  ADD KEY `Choferes_idChofer_5` (`Choferes_idChofer`);
 
 --
 -- Indices de la tabla `vehiculo_transporte_material`
@@ -287,22 +267,22 @@ ALTER TABLE `vehiculo_transporte_material`
 -- AUTO_INCREMENT de la tabla `abscisas`
 --
 ALTER TABLE `abscisas`
-  MODIFY `idAbscisa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idAbscisa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT de la tabla `choferes`
 --
 ALTER TABLE `choferes`
-  MODIFY `idChofer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `idChofer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT de la tabla `empresas`
 --
 ALTER TABLE `empresas`
-  MODIFY `idEmpresa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idEmpresa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT de la tabla `materiales`
 --
 ALTER TABLE `materiales`
-  MODIFY `idMaterial` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idMaterial` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `obra`
 --
@@ -312,7 +292,7 @@ ALTER TABLE `obra`
 -- AUTO_INCREMENT de la tabla `vehiculos_transporte`
 --
 ALTER TABLE `vehiculos_transporte`
-  MODIFY `idVehiculo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `idVehiculo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- Restricciones para tablas volcadas
 --
