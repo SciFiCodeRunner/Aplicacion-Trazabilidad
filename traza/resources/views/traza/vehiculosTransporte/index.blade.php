@@ -12,8 +12,9 @@
 			<div class="table-responsive">
 				<table class= "table table-striped table-bordered table-condensed table-hover">
 					<thead class="bg-info">
+					<th>Fecha</th>
 						<th>Recibo</th>
-						<th>Fecha</th>
+						
 						<th>Vehículo</th>
 						<th>Material</th>
 						<th>Abscisa Cargue</th>
@@ -23,8 +24,9 @@
 					</thead>
 					@foreach($vehiculos as $vehi)
 					<tr>
-						<td>{{$vehi->numeroRecibo}}</td>
+			
 						<td>{{$vehi->fecha}}</td>
+						<td>{{$vehi->numeroRecibo}}</td>
 						<td>{{$vehi->placa}}</td>
 						<td>{{$vehi->material}}</td>
 						<td>{{$vehi->abscargue}}</td>

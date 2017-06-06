@@ -91,7 +91,7 @@
 					</div>
 					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 						<div class="form-group">
-							<label for="cantidadMaterial">Cantidad Material</label>
+							<label for="cantidadMaterial">Volumen Material</label>
 							<input type="text" name="cantidadMaterial" pattern="([0-9]){0,10}([0-9]{0,10}.[0-9]{0,10})"  class="form-control" placeholder="cantidad...">
 
 						</div>

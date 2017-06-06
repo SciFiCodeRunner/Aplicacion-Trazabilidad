@@ -18,7 +18,7 @@
 						<th>Cedula</th>
 						<th>Teléfono</th>
 						
-						<th>Conduce</th>	
+						<th>Placa</th>	
 						<th>Opciones</th>	
 					</thead>
 					<?php $__currentLoopData = $choferes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $chofer): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>

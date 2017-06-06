@@ -26,12 +26,12 @@
 				<tr  class="bg-success"> 
 					<td><?php echo e($mat->fecha); ?>  </td>
 					<td><?php echo e($mat->SubRasante); ?> mᶟ </td>
-					<td><?php echo e($mat->base); ?> mᶟ </td>
+					<td><?php echo e($mat->Base); ?> mᶟ </td>
 					<td><?php echo e($mat->Subbase); ?> mᶟ </td>
-					<td><?php echo e($mat->filtrante); ?> mᶟ </td>
-					<td><?php echo e($mat->terraplen); ?> mᶟ </td>
-					<td><?php echo e($mat->materialComun); ?> mᶟ </td>
-					<td><?php echo e($mat->pedraplen); ?> mᶟ </td>
+					<td><?php echo e($mat->Filtrante); ?> mᶟ </td>
+					<td><?php echo e($mat->Terraplen); ?> mᶟ </td>
+					<td><?php echo e($mat->MaterialComun); ?> mᶟ </td>
+					<td><?php echo e($mat->Pedraplen); ?> mᶟ </td>
 					
 
 

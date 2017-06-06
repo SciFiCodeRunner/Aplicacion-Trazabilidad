@@ -47,14 +47,6 @@
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
-						<label for="cantidad_viajes">Cantidad de viajes</label>
-						<input type="text" name="cantidad_viajes" class="form-control" 	value="{{$vehiculo->cantidad_viajes}}" 
-
-						placeholder="cantidadViajesRealizados...">
-					</div>
-				</div>
-				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-					<div class="form-group">
 						<label>Empresa</label>
 						<select name="Empresa_idEmpresa" class="form-control"> 
 							@foreach ($empresa as $emp)

@@ -24,19 +24,17 @@ class MaterialProduccionController extends Controller
 (SELECT SUM(vtm2.cantidadMaterial) FROM vehiculo_transporte_material vtm2
 WHERE vtm.fecha=vtm2.fecha AND vtm2.idMaterial=1) AS SubRasante,
 (SELECT SUM(vtm2.cantidadMaterial) FROM vehiculo_transporte_material vtm2
-WHERE vtm.fecha=vtm2.fecha AND vtm2.idMaterial=2) AS base,
+WHERE vtm.fecha=vtm2.fecha AND vtm2.idMaterial=2) AS Base,
 (SELECT SUM(vtm2.cantidadMaterial) FROM vehiculo_transporte_material vtm2
 WHERE vtm.fecha=vtm2.fecha AND vtm2.idMaterial=3) AS Subbase,
 (SELECT SUM(vtm2.cantidadMaterial) FROM vehiculo_transporte_material vtm2
-WHERE vtm.fecha=vtm2.fecha AND vtm2.idMaterial=4) AS filtrante,
+WHERE vtm.fecha=vtm2.fecha AND vtm2.idMaterial=4) AS Filtrante,
 (SELECT SUM(vtm2.cantidadMaterial) FROM vehiculo_transporte_material vtm2
-WHERE vtm.fecha=vtm2.fecha AND vtm2.idMaterial=7) AS pedraplen,
+WHERE vtm.fecha=vtm2.fecha AND vtm2.idMaterial=7) AS Pedraplen,
 (SELECT SUM(vtm2.cantidadMaterial) FROM vehiculo_transporte_material vtm2
-WHERE vtm.fecha=vtm2.fecha AND vtm2.idMaterial=5) AS terraplen,
+WHERE vtm.fecha=vtm2.fecha AND vtm2.idMaterial=5) AS Terraplen,
 (SELECT SUM(vtm2.cantidadMaterial) FROM vehiculo_transporte_material vtm2
-WHERE vtm.fecha=vtm2.fecha AND vtm2.idMaterial=6) AS materialComun,
-(SELECT SUM(vtm2.cantidadMaterial) FROM vehiculo_transporte_material vtm2
-WHERE vtm.fecha=vtm2.fecha AND vtm2.idMaterial=7) AS pedraplen
+WHERE vtm.fecha=vtm2.fecha AND vtm2.idMaterial=6) AS MaterialComun
 FROM vehiculo_transporte_material vtm
 GROUP BY vtm.fecha"));
 

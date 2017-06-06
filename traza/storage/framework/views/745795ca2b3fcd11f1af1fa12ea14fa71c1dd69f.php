@@ -30,9 +30,9 @@
 							<label>Descripcion</label>
 							<select name="descripcion" class="form-control">
 								
-								<option value="LD">LDERECHO
-								<option value="LI">LIZQUIERDO
-								<option value="E">E
+								<option value="LD">L/DERECHO
+								<option value="LI">L/IZQUIERDO
+								<option value="E">EJE
 								</option>
 								
 							</select>
@@ -42,14 +42,14 @@
 					</div>
 					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
-						<label for="volumen_excavado_teorico">Volumen Diseño corte</label>
+						<label for="volumen_excavado_teorico">Volumen Diseño Corte</label>
 						<input type="text" name="volumen_excavado_teorico" pattern="([0-9]){0,10}([0-9]{0,10}.[0-9]{0,10})" value="0" class="form-control" placeholder="Volumen corte  teorico...">
 
 					</div>
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
-						<label for="volumen_llenado_teorico">Volumen Diseño llenado</label>
+						<label for="volumen_llenado_teorico">Volumen Diseño Lleno</label>
 						<input type="text" value="0" name="volumen_llenado_teorico" pattern="([0-9]){0,10}([0-9]{0,10}.[0-9]{0,10})"   class="form-control" placeholder="Volumen llenado teorico...">
 
 					</div>
@@ -57,7 +57,7 @@
 				
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
-						<label for="volumen_excavado_obra">Volumen Obra corte</label>
+						<label for="volumen_excavado_obra">Volumen Obra Corte</label>
 						<input type="text" name="volumen_excavado_obra" value="0"  pattern="([0-9]){0,10}([0-9]{0,10}.[0-9]{0,10})"  class="form-control" placeholder="volumen exc/obra...">
 
 					</div>
@@ -65,7 +65,7 @@
 				
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
-						<label for="volumen_llenado_obra">Volumen Obra llenado</label>
+						<label for="volumen_llenado_obra">Volumen Obra Lleno</label>
 						<input type="text" name="volumen_llenado_obra" pattern="([0-9]){0,10}([0-9]{0,10}.[0-9]{0,10})" value="0" class="form-control" placeholder="volumen llenado/obra...">
 
 					</div>
@@ -73,7 +73,7 @@
 				
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
-						<label for="coef_real_excavado">Coeficiente Real corte</label>
+						<label for="coef_real_excavado">Coeficiente Real Corte</label>
 						<input type="text" name="coef_real_excavado" pattern="([0-9]){0,10}([0-9]{0,10}.[0-9]{0,10})" value="0" class="form-control" placeholder="coef/real exc ...">
                 <input type="hidden" name="estadoAbscisa" value="1"  class="form-control" placeholder="coef/real exc ...">
 					</div>

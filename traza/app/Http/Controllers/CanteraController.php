@@ -26,8 +26,6 @@ class CanteraController extends Controller
 
 				->where('abs.estadoAbscisa','=',3)
 				->where('abs.nombre','LIKE','%'.$query.'%')
-				->orderBy('abs.nombre','asc')
-				
 				->paginate(1000);
 
 				return view('traza.canteras.index',["cantera"=>$cantera,"searchText"=>$query]);

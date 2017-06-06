@@ -27,12 +27,12 @@
 				<tr  class="bg-success"> 
 					<td>{{$mat->fecha}}  </td>
 					<td>{{$mat->SubRasante}} mᶟ </td>
-					<td>{{$mat->base}} mᶟ </td>
+					<td>{{$mat->Base}} mᶟ </td>
 					<td>{{$mat->Subbase}} mᶟ </td>
-					<td>{{$mat->filtrante}} mᶟ </td>
-					<td>{{$mat->terraplen}} mᶟ </td>
-					<td>{{$mat->materialComun}} mᶟ </td>
-					<td>{{$mat->pedraplen}} mᶟ </td>
+					<td>{{$mat->Filtrante}} mᶟ </td>
+					<td>{{$mat->Terraplen}} mᶟ </td>
+					<td>{{$mat->MaterialComun}} mᶟ </td>
+					<td>{{$mat->Pedraplen}} mᶟ </td>
 					
 
 

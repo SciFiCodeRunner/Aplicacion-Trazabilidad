@@ -20,14 +20,14 @@
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
 						<label for="nombre">Nombre</label>
-						<input type="text" name="nombre" class="form-control" placeholder="Nombre...">
+						<input type="text" name="nombre" class="form-control" placeholder="Nombre Empresa...">
 
 					</div>
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
-						<label for="direccion">Direccion</label>
-						<input type="text" name="direccion" class="form-control" placeholder="Direccion...">
+						<label for="direccion">Telefono</label>
+						<input type="text" name="direccion" class="form-control" placeholder="Telefono...">
 
 					</div>
 				</div>

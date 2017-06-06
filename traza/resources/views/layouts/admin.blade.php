@@ -35,7 +35,7 @@
           <span class="logo-mini"><b></b></span>
 
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>Trazabilidad</b>
+          <span class="logo-lg"><b>Trazabilidad Materiales</b>
           </span>
         </a>
 
@@ -52,7 +52,7 @@
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <small class="bg-red">Obra lineal</small>
+                  <big class="bg-red">Obra lineal</big>
                   <span class="hidden-xs"></span>
                 </a>
                 <ul class="dropdown-menu">
@@ -90,18 +90,13 @@
           <ul class="sidebar-menu">
             <li class="header"></li>
             
-			  <li class=" treeview active">
+			  
               <a href="#">
             
 			  <i class="fa fa-cogs" aria-hidden="true"></i>
                 <span>General</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
-              <ul class=" treeview active-menu">
-                <li><a href="{{url('traza/listas')}}"><i class="fa fa-circle-o "></i>Vehiculos</a></li>
-                  <li><a href="{{url('traza/canteras')}}"><i class="fa fa-circle-o "></i>Canteras</a></li>
-                    <li><a href="{{url('traza/materialProduccion')}}"><i class="fa fa-circle-o "></i>Material</a></li>
-              </ul>
             </li>
             <li class=" treeview active">
               <a href="#">
@@ -111,7 +106,7 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class=" treeview-menu">
-                <li><a href="{{url('traza/abscisas')}}"><i class="fa fa-circle-o"></i>Abscisas Obra</a></li>
+                <li><a href="{{url('traza/abscisas')}}"><i class="fa fa-circle-o"></i>Listado Abscisas</a></li>
               </ul>
             </li>
             
@@ -123,7 +118,7 @@
               </a>
               <ul class=" treeview-menu">
                 <li><a href="{{url('traza/choferes')}}"><i class="fa fa-circle-o"></i>Conductores</a></li>
-                <li><a href="{{url('traza/vehiculos')}}"><i class="fa fa-circle-o"></i>Coches de carga</a> </li>
+                <li><a href="{{url('traza/vehiculos')}}"><i class="fa fa-circle-o"></i>Vehiculos de carga</a> </li>
                 <li><a href="{{url('traza/vehiculosTransporte')}}"><i class="fa fa-circle-o"></i>Transporte en obra</a>
                 </li>
               </ul>
@@ -135,7 +130,7 @@
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class=" treeview-menu">
-                <li><a href="{{url('traza/materiales')}}"><i class="fa fa-circle-o"></i>material</a></li>
+                <li><a href="{{url('traza/materiales')}}"><i class="fa fa-circle-o"></i>tipo material</a></li>
                
               </ul>
             </li>  
@@ -150,7 +145,20 @@
                 <li><a href="{{url('traza/empresas')}}"><i class="fa fa-circle-o"></i>Registro</a></li>
                
               </ul>
-            </li>          
+            </li>     
+             <li class=" treeview active">
+              <a href="#">
+            
+        <i class="fa fa-cogs" aria-hidden="true"></i>
+                <span>Resumen</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class=" treeview active-menu">
+                <li><a href="{{url('traza/listas')}}"><i class="fa fa-circle-o "></i>Vehiculos</a></li>
+                  <li><a href="{{url('traza/canteras')}}"><i class="fa fa-circle-o "></i>Canteras</a></li>
+                    <li><a href="{{url('traza/materialProduccion')}}"><i class="fa fa-circle-o "></i>Material</a></li>
+              </ul>
+            </li>     
 
             
                         
