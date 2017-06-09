@@ -3,7 +3,7 @@
 	<div class="row">
 		<div class= "col-lg-8 col-md-8 col-sm-8 col-xs-12">
 
-			<h3>Listado de vehiculos <a href="vehiculos/create"><button class="btn btn-success">Nuevo</button></a></h3>
+			<h3>Listado de vehículos <a href="vehiculos/create"><button class="btn btn-success">Nuevo</button></a></h3>
 			<?php echo $__env->make('traza.vehiculos.search', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 			 <a href="<?php echo e(URL::to('getExport')); ?>"><button class="btn btn-success">Exportar</button></a>
 			
@@ -18,7 +18,9 @@
 						<th>Conductor</th>
 						<th>Placa	</th>
 						<th>Costo acarreo</th>	
-						<th>Opciones</th>		
+								<th>Volumen Carga</th>	
+						<th>Opciones</th>	
+
 					</thead>
 					<?php $__currentLoopData = $vehiculos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $vehi): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 					<tr>
@@ -26,6 +28,8 @@
 						<td><?php echo e($vehi->Conductor); ?></td>
 						<td><?php echo e($vehi->placa); ?></td>
 						<td><?php echo e($vehi->costo_acarreo); ?></td>
+						<td><?php echo e($vehi->volumen_carga); ?></td>
+
 						<td>
 							<a href="<?php echo e(URL::action('VehiculoController@edit',$vehi->idVehiculo)); ?>">
 							<button class="btn btn-info">Editar</button></a>

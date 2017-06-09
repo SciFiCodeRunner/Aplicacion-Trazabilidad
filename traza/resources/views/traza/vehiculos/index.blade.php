@@ -18,7 +18,9 @@
 						<th>Conductor</th>
 						<th>Placa	</th>
 						<th>Costo acarreo</th>	
-						<th>Opciones</th>		
+								<th>Volumen Carga</th>	
+						<th>Opciones</th>	
+
 					</thead>
 					@foreach($vehiculos as $vehi)
 					<tr>
@@ -26,6 +28,8 @@
 						<td>{{$vehi->Conductor}}</td>
 						<td>{{$vehi->placa}}</td>
 						<td>{{$vehi->costo_acarreo}}</td>
+						<td>{{$vehi->volumen_carga}}</td>
+
 						<td>
 							<a href="{{URL::action('VehiculoController@edit',$vehi->idVehiculo)}}">
 							<button class="btn btn-info">Editar</button></a>

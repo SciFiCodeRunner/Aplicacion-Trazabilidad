@@ -41,7 +41,7 @@
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
-						<label>Conductor</label>
+						<label>Conductor (solo un conductor por vehiculo)</label>
 						<select name="Choferes_idChofer" class="form-control">
 							@foreach ($chofer as $cho)
 							<option value="{{$cho->idChofer}}"> {{$cho->nombre}}

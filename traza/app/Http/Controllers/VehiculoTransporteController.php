@@ -7,6 +7,7 @@ use Trazabilidad\Http\Requests;
 use Trazabilidad\VehiculoTransporte;
 use Trazabilidad\Material;
 use Trazabilidad\Vehiculo;
+use Trazabilidad\Abscisa;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Collection as Collection;
 use Trazabilidad\Http\Requests\MaterialFormRequest;
@@ -94,6 +95,8 @@ class VehiculoTransporteController extends Controller
 $vehiculoTransMaterial=VehiculoTransporte::findOrFail($id);
 /*var_dump($vehiculoTransMaterial);
  dd($vehiculoTransMaterial);*/
+ $abscisaDescargue=Abscisa::findOrFail($vehiculoTransMaterial->id_abscisa_descargue);
+ $abscisaCargue=Abscisa::findOrFail($vehiculoTransMaterial->id_abscisa_cargue);
 $material=Material::findOrFail($vehiculoTransMaterial->idMaterial);
 $vehiculo=Vehiculo::findOrFail($vehiculoTransMaterial->idVehiculo);
 /*var_dump($vehiculo);
@@ -103,7 +106,7 @@ $vehiculo=Vehiculo::findOrFail($vehiculoTransMaterial->idVehiculo);
 		$abscisa=DB::table('abscisas')->get();
 		$vehiculos=DB::table('vehiculos_transporte')->get();
 
-		return view('traza.vehiculosTransporte.edit',["materiales"=>$materiales,"abscisas"=>$abscisa,"vehiculo"=>VehiculoTransporte::findOrFail($id),"vehiculos"=>$vehiculos,"material"=>$material,"vehiculoCombo"=>$vehiculo]);
+		return view('traza.vehiculosTransporte.edit',["materiales"=>$materiales,"abscisas"=>$abscisa,"vehiculo"=>VehiculoTransporte::findOrFail($id),"vehiculos"=>$vehiculos,"material"=>$material,"vehiculoCombo"=>$vehiculo,"abscargue"=>$abscisaCargue,"absdescargue"=>$abscisaDescargue,"id"=>$id]);
 
 		
 	}

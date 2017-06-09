@@ -11,10 +11,10 @@
 				aria-label="Close">
                      <span aria-hidden="true">×</span>
                 </button>
-                <h4 class="modal-title">Eliminar Vehiculo</h4>
+                <h4 class="modal-title">Eliminar Vehículo</h4>
 			</div>
 			<div class="modal-body">
-				<p>Desea eliminar el vehiculo?</p>
+				<p>Desea eliminar el vehículo?</p>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>

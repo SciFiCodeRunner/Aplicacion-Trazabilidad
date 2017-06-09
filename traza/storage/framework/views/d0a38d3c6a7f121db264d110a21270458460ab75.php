@@ -16,16 +16,16 @@
 						
 						<th>Nombre</th>
 						<th>Cedula</th>
-						<th>Telefono</th>
-						<th>Direccion</th>
-						<th>Conduce</th>	
+						<th>Teléfono</th>
+						
+						<th>Placa</th>	
 						<th>Opciones</th>	
 					</thead>
 					<?php $__currentLoopData = $choferes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $chofer): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 						<td><?php echo e($chofer->nombre); ?></td>
 						<td><?php echo e($chofer->cedula); ?></td>
 						<td><?php echo e($chofer->telefono); ?></td>
-						<td><?php echo e($chofer->direccion); ?></td>
+						
 						<td><?php echo e($chofer->placa); ?></td>
 						<td>
 							<a href="<?php echo e(URL::action('ConductorController@edit',$chofer->idChofer)); ?>">

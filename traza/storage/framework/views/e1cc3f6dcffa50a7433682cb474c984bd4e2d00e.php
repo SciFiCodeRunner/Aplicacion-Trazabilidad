@@ -27,8 +27,8 @@
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
-						<label for="descripcion">Descripcion de la cantera </label>
-						<input type="text"  value="" name="descripcion" class="form-control" placeholder="Descripcion...">
+						<label for="descripcion">Descripción de la cantera </label>
+						<input type="text"  value="" name="descripcion"  class="form-control" placeholder="Descripcion...">
 
 					</div>
 				</div>

@@ -3,9 +3,9 @@
 		<div class="row">
 			<div class= "col-lg-8 col-md-8 col-sm-8 col-xs-12">
 
-				<h3>Listado de Abscisas <a href="abscisas/create"><button class="btn btn-success">Nueva Abscisa</button> <a href="<?php echo e(URL::to('createCantera')); ?>"><button class="btn btn-success">Nueva Cantera</button> 				</a></h3>
+				<h3>Listado de abscisas  <br>   <br>                                                                                 <a href="abscisas/create"><button class="btn btn-success">Nueva Abscisa</button> <a href="<?php echo e(URL::to('createCantera')); ?>"><button class="btn btn-success">Nueva Cantera</button> 				</a></h3>
 
-				<?php echo $__env->make('traza.abscisas.search', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
 			</div>
 		</div>
 		<div class= "row">
@@ -27,12 +27,14 @@
 							<TR  class="bg-success">
 								<th></th>
 								
-								<TH style="text-align:center">lleno</TH> <TH style="text-align:center">corte</TH> 
+								<TH style="text-align:center">corte</TH>
+								<TH style="text-align:center">lleno</TH> 
+								<TH style="text-align:center">corte</TH>
 								<TH style="text-align:center">lleno</TH>
 								<TH style="text-align:center">corte</TH>
-								<TH style="text-align:center">lleno</TH> <TH style="text-align:center">corte</TH> 
 								<TH style="text-align:center">lleno</TH> 
 								<TH style="text-align:center">corte</TH> 
+								<TH style="text-align:center">lleno</TH> 
 								
 								
 							</TR>
@@ -41,22 +43,23 @@
 							
 							<td ><?php echo e($abs->nombre); ?></td>
 							<!--volumen teorico-->
-							<td><?php echo e($abs->volumen_llenado_teorico); ?> <?php echo e('M3'); ?></td>
-							<td><?php echo e($abs->volumen_excavado_teorico); ?> <?php echo e('M3'); ?></td>
+							<td><?php echo e($abs->volumen_excavado_teorico); ?> mᶟ </td>
+							<td><?php echo e($abs->volumen_llenado_teorico); ?> mᶟ </td>
+
 							<!--volumen transportado-->
-							<td><?php echo e($abs->volumenLlenado); ?> <?php echo e('M3'); ?></td>
-							<td><?php echo e($abs->volumenExcavado); ?> <?php echo e('M3'); ?> </td>
 
-							<!--volumenCompactoTransportado-->
-
-
-							<!--volumen en obra-->
-							<td><?php echo e($abs->volumen_llenado_obra); ?> <?php echo e('M3'); ?></td>
-							<td><?php echo e($abs->volumen_excavado_obra); ?> <?php echo e('M3'); ?></td>
+							<td><?php echo e($abs->volumenLlenado); ?> mᶟ </td>
+							<td><?php echo e($abs->volumenExcavado); ?> mᶟ  </td>
 							
-
-							<td ><?php echo e(($abs->volumenLlenado-$abs->volumen_llenado_obra)); ?></td>
-							<td ><?php echo e(($abs->volumenExcavado-$abs->volumen_excavado_obra)); ?></td>
+							<!--volumen en obra-->
+							<td><?php echo e($abs->volumen_excavado_obra); ?> mᶟ </td>
+							<td><?php echo e($abs->volumen_llenado_obra); ?> mᶟ </td>
+							
+							<!--volumen compacto-->
+							<td ><?php echo e(($abs->volumenExcavado-$abs->volumen_llenado_obra)); ?></td>
+							<td ><?php echo e(($abs->volumenLlenado-$abs->volumen_excavado_obra)); ?></td>
+							
+							
 							<td rowspan="4">
 								<?php echo Form::open(array('url'=>'traza/abscisas','method'=>'GET','autocomplete'=>'off','role'=>'search')); ?>
 
@@ -82,43 +85,46 @@
 								</TR>
 								<tr>
 									<th colspan="1"></th>
+									<th colspan="2" style="text-align:center">corte</th>
 									<th colspan="2" style="text-align:center">lleno</th>
-									<th colspan="2" style="text-align:center">excavado</th>
+									<th colspan="2" style="text-align:center">corte</th>
 									<th colspan="2" style="text-align:center">lleno</th>
-									<th colspan="2" style="text-align:center">excavado</th>
 									<th colspan="2"></th>
 								</tr>
 
 								<tr style="text-align:center">
-									<!--coeficiente/teorico LLeno-->
+
 									<td></td>
-									<?php if($abs->volumenLlenado==0||$abs->volumen_llenado_teorico==0.00||$abs->volumen_llenado_teorico==0||$abs->volumen_llenado_teorico==0.0): ?>
-									<td colspan="2"><?php echo e($abs->volumenLlenado); ?> <?php echo e('M3'); ?></td>
-									<?php elseif($abs->volumenLlenado/$abs->volumen_llenado_teorico>=1.25||$abs->volumenLlenado/$abs->volumen_llenado_teorico <= 1.35): ?>
-									<td id="color1" colspan="2"><?php echo e(round($abs->volumenLlenado/$abs->volumen_llenado_teorico,2)); ?> <?php echo e('M3'); ?></td>
-									<?php else: ?>
-									<td colspan="2"><?php echo e(round($abs->volumenLlenado/$abs->volumen_llenado_teorico,2)); ?> <?php echo e('M3'); ?></td>
-									<?php endif; ?>
+									
 									<!--ccoeficiente teorico Excavado-->
-									<?php if($abs->volumenExcavado==0||$abs->volumen_excavado_teorico==0.00||$abs->volumen_excavado_teorico==0||$abs->volumen_excavado_teorico==0.0): ?>
-									<td colspan="2"><?php echo e($abs->volumen_excavado_teorico); ?> <?php echo e('M3'); ?></td>
-									<?php elseif($abs->volumenExcavado/$abs->volumen_excavado_teorico>1.35||$abs->volumenExcavado/$abs->volumen_excavado_teorico < 1.25): ?>
-									<td id="color1" colspan="2"><?php echo e(round($abs->volumenExcavado/$abs->volumen_excavado_teorico,2)); ?> <?php echo e('M3'); ?></td>
+									<?php if($abs->volumenLlenado==0||$abs->volumen_excavado_teorico==0.00||$abs->volumen_excavado_teorico==0||$abs->volumen_excavado_teorico==0.0): ?>
+									<td colspan="2"><?php echo e($abs->volumen_excavado_teorico); ?> mᶟ </td>
+									<?php elseif($abs->volumenLlenado/$abs->volumen_excavado_teorico>1.35||$abs->volumenLlenado/$abs->volumen_excavado_teorico < 1.25): ?>
+									<td id="color1" colspan="2"><?php echo e(round($abs->volumenLlenado/$abs->volumen_excavado_teorico,2)); ?> mᶟ </td>
 									<?php else: ?>
-									<td colspan="2"><?php echo e(round($abs->volumenExcavado/$abs->volumen_excavado_teorico,2)); ?> <?php echo e('M3'); ?></td>
+									<td colspan="2"><?php echo e(round($abs->volumenLlenado/$abs->volumen_excavado_teorico,2)); ?> mᶟ </td>
+									<?php endif; ?>
+									<!--coeficiente/teorico LLeno-->
+									<?php if($abs->volumenExcavado==0||$abs->volumen_llenado_teorico==0.00||$abs->volumen_llenado_teorico==0||$abs->volumen_llenado_teorico==0.0): ?>
+									<td colspan="2"><?php echo e($abs->volumenExcavado); ?> mᶟ </td>
+									<?php elseif($abs->volumenExcavado/$abs->volumen_llenado_teorico>1.35||$abs->volumenExcavado/$abs->volumen_llenado_teorico < 1.25): ?>
+									<td id="color1" colspan="2"><?php echo e(round($abs->volumenExcavado/$abs->volumen_llenado_teorico,2)); ?> mᶟ </td>
+									<?php else: ?>
+									<td colspan="2"><?php echo e(round($abs->volumenExcavado/$abs->volumen_llenado_teorico,2)); ?> mᶟ </td>
 									<?php endif; ?>
 
+									<!--coeficienteRealLLeno-->
+									<?php if($abs->volumenLlenado==0||$abs->coef_real_llenado==0||$abs->coef_real_llenado==0.0||$abs->coef_real_llenado==0.00||$abs->volumenLlenado==0.00||$abs->volumenLlenado==0.0): ?>
+									<td colspan="2"><?php echo e($abs->volumenLlenado); ?> mᶟ </td>
+									<?php else: ?>
+									<td colspan="2"><?php echo e(round($abs->coef_real_llenado/$abs->volumenLlenado,2)); ?> mᶟ </td>
+									<?php endif; ?>
 									<!--coeficiente/real corte-->
-									<?php if($abs->volumenExcavado||$abs->volumen_excavado_obra==0.00||$abs->volumenExcavado==0.00||$abs->volumenExcavado==0||$abs->volumenExcavado==0.0): ?>
-									<td colspan="2"><?php echo e($abs->volumen_excavado_obra); ?> <?php echo e('M3'); ?></td>
+									
+									<?php if($abs->volumenExcavado==0||$abs->coef_real_excavado==0||$abs->coef_real_excavado==0.0||$abs->volumenExcavado==0.00||$abs->volumenExcavado==0.0): ?>
+									<td colspan="2"><?php echo e($abs->volumenExcavado); ?> mᶟ </td>
 									<?php else: ?>
-									<td colspan="2"><?php echo e(round($abs->volumen_excavado_obra/$abs->volumenExcavado,2)); ?> <?php echo e('M3'); ?></td>
-									<?php endif; ?>
-
-									<?php if($abs->volumenLlenado||$abs->volumen_llenado_obra==0.00||$abs->volumenLlenado=0.00||$abs->volumenLlenado==0||$abs->volumenLlenado==0.0): ?>
-									<td colspan="2"><?php echo e($abs->volumen_llenado_obra); ?> <?php echo e('M3'); ?></td>
-									<?php else: ?>
-									<td colspan="2"><?php echo e(round($abs->volumen_llenado_obra/$abs->volumenLlenado,2)); ?> <?php echo e('M3'); ?></td>
+									<td colspan="2"><?php echo e(round($abs->coef_real_excavado/$abs->volumenExcavado,2)); ?> mᶟ</td>
 									<?php endif; ?>
 
 								</tr>
@@ -128,7 +134,7 @@
 								</tr>
 								<th></th>
 								<!--coeficiente MaterialCompacto-->
-								<td id="color2" colspan="8" style="text-align:center"><?php echo e(round($abs->volumenLlenado/1.3,2)); ?></td>
+								<td id="color2" colspan="8" style="text-align:center"><?php echo e(round($abs->volumenExcavado/1.3,2)); ?></td>
 							</tr>
 							<?php echo $__env->make('traza.abscisas.modal', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 							<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

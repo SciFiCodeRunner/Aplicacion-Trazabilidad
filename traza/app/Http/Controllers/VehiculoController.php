@@ -5,6 +5,7 @@ namespace Trazabilidad\Http\Controllers;
 use Illuminate\Http\Request;
 use Trazabilidad\Http\Requests;
 use Trazabilidad\Vehiculo;
+use Trazabilidad\Empresa;
 use Illuminate\Support\Facades\Redirect;
 use
 Trazabilidad\Http\Requests\VehiculoFormRequest;
@@ -21,7 +22,7 @@ class VehiculoController extends Controller
 			$vehiculos=DB::table('vehiculos_transporte as vh')
 			->join('choferes as ch','vh.Choferes_idChofer','=','ch.idChofer')
 			->join('empresas as emp','vh.Empresa_idEmpresa','=','emp.idEmpresa')
-			->select('vh.idVehiculo','vh.placa','vh.costo_acarreo','vh.volumen_transportado','emp.nombre as Empresa','ch.nombre as Conductor')
+			->select('vh.idVehiculo','vh.placa','vh.costo_acarreo','vh.volumen_transportado','emp.nombre as Empresa','ch.nombre as Conductor','vh.volumen_carga')
 			->where('estado','=',1)
 			->where('vh.placa','LIKE','%'.$query.'%')
 
@@ -30,8 +31,11 @@ class VehiculoController extends Controller
 		}
 	}
 	public function create(){
-		$empresas= DB::table('empresas')->get();
-		$choferes=DB::table('choferes')->get();
+		$empresas= DB::table('empresas')
+		->where('estadoEmpresa','=',1)->get();
+		$choferes=DB::table('choferes')
+		->where('estadoChofer','=',1)
+		->get();
 		return view("traza.vehiculos.create",["empresa"=>$empresas],["chofer"=>$choferes]);
 		
 	}
@@ -74,9 +78,16 @@ class VehiculoController extends Controller
 	}
 
 	public function edit($id){
-		$empresas2= DB::table('empresas')->get();
-		$choferes2=DB::table('choferes')->get();
-		return view('traza.vehiculos.edit',["empresa"=>$empresas2,"chofer"=>$choferes2,"vehiculo"=>Vehiculo::findOrFail($id)]);
+
+		$consulta=Vehiculo::findOrFail($id);
+		$consulta2=Empresa::findOrFail($consulta->Empresa_idEmpresa);
+		$empresas2= DB::table('empresas')
+		->where('estadoEmpresa','=',1)
+		->get();
+		$choferes2=DB::table('choferes')
+		->where('estadoChofer','=',1)
+		->get();
+		return view('traza.vehiculos.edit',["empresa"=>$empresas2,"chofer"=>$choferes2,"vehiculo"=>Vehiculo::findOrFail($id),"consulta"=>$consulta2]);
 
 		
 	}

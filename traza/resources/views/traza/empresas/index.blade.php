@@ -14,7 +14,7 @@
 					<thead>
 						
 						<th>Nombre</th>
-						<th>direccion</th>
+						<th>Telefono</th>
 					
 					</thead>
 					@foreach($empresas as $emp)

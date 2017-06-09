@@ -22,78 +22,80 @@
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
 						<label for="nombre">Nombre</label>
-						<input type="text" name="nombre" class="form-control"
-						value="<?php echo e($abscisa->nombre); ?>" 
-						placeholder="Nombre...">
-					</div>
-				</div>
-				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+						<input type="text"  value="<?php echo e($abscisa->nombre); ?>" name="nombre" class="form-control" value ="K" placeholder="Nombre...">
 
-					<div class="form-group">
-						<label for="descripcion">Descripcion</label>
-						<input type="text" name="descripcion" class="form-control"
-						value="<?php echo e($abscisa->descripcion); ?>" 
-						placeholder="descripcion...">
 					</div>
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-					<div class="form-group">
-						<label for="volumen_llenado_teorico">Volumen llenado teorico</label>
-						<input type="text" name="volumen_llenado_teorico" class="form-control"
-						value="<?php echo e($abscisa->volumen_llenado_teorico); ?>" 
-						placeholder="vol...">
+						<div class="form-group">
+							<label>Descripcion</label>
+							<select name="descripcion" class="form-control">
+								<option   value="<?php echo e($abscisa->descripcion); ?>"><?php echo e($abscisa->descripcion); ?></option>
+								<option value="LD">LDERECHO
+								<option value="LI">LIZQUIERDO
+								<option value="E">E
+								</option>
+								
+							</select>
+
+
+						</div>
 					</div>
-				</div>
-				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-					<div class="form-group">
-						<label for="volumen_excavado_teorico">Volumen excavado teorico</label>
-						<input type="text" name="volumen_excavado_teorico" class="form-control"
-						value="<?php echo e($abscisa->volumen_excavado_teorico); ?>" 
-						placeholder="vol...">
-					</div>
-				</div>
 					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
-						<label for="volumen_real_llenado">Volumen Real llenado</label>
-						<input type="text" name="volumen_real_llenado" class="form-control"
-						value="<?php echo e($abscisa->volumen_real_llenado); ?>" 
-						placeholder="vol...">
-					</div>
-				</div>
-				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-					<div class="form-group">
-						<label for="volumen_real_excavado">Volumen Real Excavado</label>
-						<input type="text" name="volumen_real_excavado" class="form-control"
-						value="<?php echo e($abscisa->volumen_real_llenado); ?>" 
-						placeholder="vol...">
-					</div>
-				</div>
-					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-					<div class="form-group">
-						<label for="volumen_llenado_obra">Volumen Obra llenado</label>
-						<input type="text" name="volumen_llenado_obra" value="<?php echo e($abscisa->volumen_llenado_obra); ?>" class="form-control" placeholder="volumen llenado/obra...">
+						<label for="volumen_excavado_teorico">Volumen Diseño corte</label>
+						<input type="text"   value="<?php echo e($abscisa->volumen_excavado_teorico); ?>" name="volumen_excavado_teorico" pattern="([0-9]){0,10}([0-9]{0,10}.[0-9]{0,10})" class="form-control" placeholder="Volumen corte  teorico...">
 
 					</div>
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
-						<label for="volumen_excavado_obra">Volumen Obra corte</label>
-						<input type="text"  name="volumen_excavado_obra" value="<?php echo e($abscisa->volumen_excavado_obra); ?>" class="form-control" placeholder="volumen exc/obra...">
+						<label for="volumen_llenado_teorico">Volumen Diseño llenado</label>
+						<input type="text" value="<?php echo e($abscisa->volumen_llenado_teorico); ?>" name="volumen_llenado_teorico" pattern="([0-9]){0,10}([0-9]{0,10}.[0-9]{0,10})"   class="form-control" placeholder="Volumen llenado teorico...">
 
 					</div>
 				</div>
 				
-
-
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
-						<label> </label>
-						<div>
-							<button class="btn btn-primary" type="submit">Guardar</button>
-							<button  class="btn btn-danger" type="reset">Cancelar</button>
-						</div>
+						<label for="volumen_excavado_obra">Volumen Obra corte</label>
+						<input type="text" name="volumen_excavado_obra" value="<?php echo e($abscisa->volumen_excavado_obra); ?>"  pattern="([0-9]){0,10}([0-9]{0,10}.[0-9]{0,10})"  class="form-control" placeholder="volumen exc/obra...">
+
 					</div>
 				</div>
+				
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+					<div class="form-group">
+						<label for="volumen_llenado_obra">Volumen Obra llenado</label>
+						<input type="text" name="volumen_llenado_obra" pattern="([0-9]){0,10}([0-9]{0,10}.[0-9]{0,10})" value="<?php echo e($abscisa->volumen_llenado_obra); ?>" class="form-control" placeholder="volumen llenado/obra...">
+
+					</div>
+				</div>
+				
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+					<div class="form-group">
+						<label for="coef_real_excavado">Coeficiente Real corte</label>
+						<input type="text" name="coef_real_excavado" pattern="([0-9]){0,10}([0-9]{0,10}.[0-9]{0,10})"  value="<?php echo e($abscisa->coef_real_excavado); ?>" class="form-control" placeholder="coef/real exc ...">
+                <input type="hidden" name="estadoAbscisa" value="1"  class="form-control" placeholder="coef/real exc ...">
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+					<div class="form-group">
+						<label for="coef_real_llenado">Coeficiente Real Llenado</label>
+						<input type="text" name="coef_real_llenado" value="<?php echo e($abscisa->coef_real_llenado); ?>"  pattern="([0-9]){0,10}([0-9]{0,10}.[0-9]{0,10})"  class="form-control" placeholder="coef/real llenado...">
+
+					</div>
+				</div>
+				
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+				<div class="form-group">
+					<label> </label>
+					<div>
+					<button class="btn btn-primary" type="submit">Guardar</button>
+					<button  class="btn btn-danger" type="reset">Cancelar</button>
+					</div>
+				</div>
+			</div>
 			</div>
 			
 		</div>

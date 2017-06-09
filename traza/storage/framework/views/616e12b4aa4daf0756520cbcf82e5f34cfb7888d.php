@@ -2,7 +2,7 @@
 <div class="row">
 	<div class="col-lg-8 col-md-6 col-sm-6 col-xs-12">
 		<h3>
-			Nuevo Vehiculo</h3>
+			Nuevo Vehículo</h3>
 			<?php if(count($errors)> 0 ): ?>
 			<div class="alert alert-danger">
 				<ul>
@@ -29,20 +29,20 @@
 					<div class="form-group">
 						<label for="costo_acarreo">Costo acarreo 
 						</label>
-						<input type="text" name="costo_acarreo" class="form-control" placeholder="Costo...">
+						<input type="text" name="costo_acarreo" pattern="([0-9]){0,15}([0-9]{0,15}.[0-9]{0,15})"  class="form-control" placeholder="Costo...">
 
 					</div>
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
 						<label for="volumen_carga">Volumen de carga</label>
-						<input type="text" name="volumen_carga" class="form-control" placeholder="volumen...">
+						<input type="text" name="volumen_carga" pattern="([0-9]){0,10}([0-9]{0,10}.[0-9]{0,10})"  class="form-control" placeholder="volumen...">
 
 					</div>
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
-						<label>Conductor</label>
+						<label>Conductor (solo un conductor por vehiculo)</label>
 						<select name="Choferes_idChofer" class="form-control">
 							<?php $__currentLoopData = $chofer; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cho): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 							<option value="<?php echo e($cho->idChofer); ?>"> <?php echo e($cho->nombre); ?>

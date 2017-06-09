@@ -13,8 +13,8 @@
 				<table class= "table table-striped table-bordered table-condensed table-hover">
 					<thead>
 						<th>Nombre</th>
-						<th>Descripcion</th>
-						<th>Compactacion</th>
+						<th>Descripción</th>
+						<th>Compactación</th>
 						<th>Precio</th>
 						<th>Opciones</th>	
 					</thead>

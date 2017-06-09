@@ -22,6 +22,7 @@ public function __construct(){
 			->leftJoin('vehiculos_transporte as vt','choferes.idChofer','=','vt.Choferes_idChofer')
 			->select('idChofer','nombre','cedula','telefono','vt.placa as placa')
 			->where('estadoChofer','=',1)
+				->where('nombre','LIKE','%'.$query.'%')
 		
 			->paginate(100);
 			return view('traza.choferes.index',["choferes"=>$choferes,"searchText"=>$query]);

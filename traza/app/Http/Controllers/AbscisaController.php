@@ -20,12 +20,70 @@ class AbscisaController extends Controller
 		if ($request){
 			$query=trim($request->get('searchText'));
 			if ($query!='') {
+				$num = (int)$query;
 				$abscisa3= DB::select(DB::raw("SELECT
-					abs.idAbscisa ,abs.nombre,abs.volumen_llenado_teorico,abs.volumen_excavado_teorico,abs.volumen_llenado_obra,abs.volumen_excavado_obra,
+					abs.idAbscisa ,abs.nombre,abs.volumen_llenado_teorico,abs.volumen_excavado_teorico,abs.volumen_llenado_obra,abs.volumen_excavado_obra,abs.coef_real_llenado,abs.coef_real_excavado,
 					CASE WHEN (SELECT COUNT(*) FROM vehiculo_transporte_material AS vtm WHERE vtm.id_abscisa_cargue=abs.idAbscisa)>0 THEN (SELECT SUM(vtm.cantidadMaterial) FROM vehiculo_transporte_material AS vtm WHERE vtm.id_abscisa_cargue=abs.idAbscisa) ELSE 0 END AS volumenExcavado,
 					CASE WHEN (SELECT COUNT(*) FROM vehiculo_transporte_material AS vtm WHERE vtm.id_abscisa_descargue=abs.idAbscisa)>0 THEN (SELECT SUM(vtm.cantidadMaterial) FROM vehiculo_transporte_material AS vtm WHERE vtm.id_abscisa_descargue=abs.idAbscisa) ELSE 0 END AS volumenLlenado
 
-					FROM abscisas AS abs  WHERE abs.idAbscisa LIKE '%$query%' or abs.nombre LIKE '%$query%' "));
+					FROM abscisas AS abs  WHERE abs.idAbscisa LIKE '%$query%' "));
+
+
+				$material=DB::select(db::raw("SELECT vtm.fecha,vtm.id_abscisa_descargue as des,
+					(SELECT SUM(vtm2.cantidadMaterial) FROM vehiculo_transporte_material vtm2
+					WHERE vtm.id_abscisa_descargue=vtm2.id_abscisa_descargue AND vtm2.idMaterial=1) AS SubRasante,
+					(SELECT SUM(vtm2.cantidadMaterial) FROM vehiculo_transporte_material vtm2
+					WHERE vtm.id_abscisa_descargue=vtm2.id_abscisa_descargue AND vtm2.idMaterial=2) AS Base,
+					(SELECT SUM(vtm2.cantidadMaterial) FROM vehiculo_transporte_material vtm2
+					WHERE vtm.id_abscisa_descargue=vtm2.id_abscisa_descargue AND vtm2.idMaterial=3) AS Subbase,
+					(SELECT SUM(vtm2.cantidadMaterial) FROM vehiculo_transporte_material vtm2
+					WHERE vtm.id_abscisa_descargue=vtm2.id_abscisa_descargue AND vtm2.idMaterial=4) AS Filtrante,
+					(SELECT SUM(vtm2.cantidadMaterial) FROM vehiculo_transporte_material vtm2
+					WHERE vtm.id_abscisa_descargue=vtm2.id_abscisa_descargue AND vtm2.idMaterial=7) AS Pedraplen,
+					(SELECT SUM(vtm2.cantidadMaterial) FROM vehiculo_transporte_material vtm2
+					WHERE vtm.id_abscisa_descargue=vtm2.id_abscisa_descargue AND vtm2.idMaterial=5) AS Terraplen,
+					(SELECT SUM(vtm2.cantidadMaterial) FROM vehiculo_transporte_material vtm2
+					WHERE vtm.id_abscisa_descargue=vtm2.id_abscisa_descargue AND vtm2.idMaterial=6) AS MaterialComun
+					FROM vehiculo_transporte_material vtm where vtm.id_abscisa_descargue=$num
+					GROUP BY vtm.id_abscisa_descargue"));
+
+				$collection = Collection::make($material);
+				/*Material Terraplen LLeno*/
+				$materialTerraplen=DB::select(db::raw("SELECT vtm.fecha,vtm.id_abscisa_descargue as des,
+					(SELECT SUM(vtm2.cantidadMaterial) FROM vehiculo_transporte_material vtm2
+					WHERE vtm.id_abscisa_descargue=vtm2.id_abscisa_descargue AND vtm2.idMaterial=5) AS Terraplen
+					FROM vehiculo_transporte_material vtm where vtm.id_abscisa_descargue=$num
+					GROUP BY vtm.id_abscisa_descargue"));
+				$collection = Collection::make($materialTerraplen);
+
+
+				$materialComun=DB::select(db::raw("SELECT vtm.fecha,vtm.id_abscisa_cargue as des,
+					(SELECT SUM(vtm2.cantidadMaterial) FROM vehiculo_transporte_material vtm2
+					WHERE vtm.id_abscisa_cargue=vtm2.id_abscisa_cargue AND vtm2.idMaterial=6) AS Comun
+					FROM vehiculo_transporte_material vtm where vtm.id_abscisa_cargue=$num
+					GROUP BY vtm.id_abscisa_cargue"));
+				$collection2 =Collection::make($materialComun);
+
+				if(count($collection)>0){
+					
+					$var1=$collection[0]->Terraplen;
+				}
+				else{
+					$var=0.00;
+				}
+				
+
+
+				if(count($collection2)>0){
+
+					$var2=$collection2[0]->Comun;
+
+
+				}
+				else{
+					$var2=0.00;
+				}	
+
 
 
 				$abscisa2= DB::table('abscisas as abs')
@@ -35,7 +93,6 @@ class AbscisaController extends Controller
 				->select('abs.nombre','vtm.fecha','vtm.numeroRecibo','vht.placa','vtm.cantidadMaterial','mat.nombre as matnombre')
 				->where('abs.estadoAbscisa','=',1)
 				->where('abs.idAbscisa','LIKE','%'.$query.'%')
-				->orwhere('abs.nombre','LIKE','%'.$query.'%')
 				->orderBy('abs.nombre','asc')
 				->groupBy('abs.nombre','vtm.fecha','vtm.numeroRecibo','vht.placa','vtm.cantidadMaterial','mat.nombre') 
 				->paginate(1000);
@@ -46,34 +103,35 @@ class AbscisaController extends Controller
 				->select('abs.nombre','vtm.fecha','vtm.numeroRecibo','vht.placa','vtm.cantidadMaterial','mat.nombre as matnombre')
 				->where('abs.estadoAbscisa','=',1)
 				->where('abs.idAbscisa','LIKE','%'.$query.'%')
-				->orwhere('abs.nombre','LIKE','%'.$query.'%')
 				->orderBy('abs.nombre','asc')
 				->groupBy('abs.nombre','vtm.fecha','vtm.numeroRecibo','vht.placa','vtm.cantidadMaterial','mat.nombre') 
 				->paginate(1000);
-				return view('traza.abscisas.index2',["abscisa2"=>$abscisa2,"abscisa"=>$abscisa3,"abscisa1"=>$abscisa1,"searchText"=>$query]);
+				return view('traza.abscisas.index2',["abscisa2"=>$abscisa2,"abscisa"=>$abscisa3,"abscisa1"=>$abscisa1,"searchText"=>$query,"materialk"=>$material,"Terraplen"=>$var2,"Comun"=>$var1]);
+
 			}else{
 				$abscisas= DB::select(DB::raw("SELECT
-					abs.idAbscisa ,abs.nombre,abs.volumen_llenado_teorico,abs.volumen_excavado_teorico,abs.volumen_llenado_obra,abs.volumen_excavado_obra,
+					abs.idAbscisa ,abs.nombre,abs.volumen_llenado_teorico,abs.volumen_excavado_teorico,abs.volumen_llenado_obra,abs.volumen_excavado_obra,abs.coef_real_llenado,abs.coef_real_excavado,
 					CASE WHEN (SELECT COUNT(*) FROM vehiculo_transporte_material AS vtm WHERE vtm.id_abscisa_cargue=abs.idAbscisa)>0 THEN (SELECT SUM(vtm.cantidadMaterial) FROM vehiculo_transporte_material AS vtm WHERE vtm.id_abscisa_cargue=abs.idAbscisa) ELSE 0 END AS volumenLlenado,
 					CASE WHEN (SELECT COUNT(*) FROM vehiculo_transporte_material AS vtm WHERE vtm.id_abscisa_descargue=abs.idAbscisa)>0 THEN (SELECT SUM(vtm.cantidadMaterial) FROM vehiculo_transporte_material AS vtm WHERE vtm.id_abscisa_descargue=abs.idAbscisa) ELSE 0 END AS volumenExcavado
 
 					FROM abscisas AS abs  WHERE abs.idAbscisa LIKE '%$query%' and abs.estadoAbscisa=1"));
 
 
-				
+				/*dd($abscisas);
+				var_dump($abscisas);*/
 				return view('traza.abscisas.index',["abscisa"=>$abscisas,"searchText"=>$query]);
 			}
 		}
 	}
 	public function create(){
-	
-	
+
+
 		return view("traza.abscisas.create");
 		
 	}
 	public function createCantera(){
-	
-	
+
+
 		return view("traza.abscisas.createCantera");
 		
 	}
@@ -84,7 +142,7 @@ class AbscisaController extends Controller
 		$abscisa->volumen_llenado_teorico=$request->get('volumen_llenado_teorico');
 		$abscisa->volumen_excavado_teorico=$request->get('volumen_excavado_teorico');
 		$abscisa->volumen_excavado_obra=$request->get('volumen_excavado_obra');
-		$abscisa->volumen_llenado_obra=$request->get('volumen_excavado_teorico');
+		$abscisa->volumen_llenado_obra=$request->get('volumen_llenado_obra');
 		$abscisa->coef_real_llenado=$request->get('coef_real_llenado');
 		$abscisa->coef_real_excavado=$request->get('coef_real_excavado');
 		$abscisa->estadoAbscisa=$request->get('estadoAbscisa');
@@ -101,7 +159,7 @@ class AbscisaController extends Controller
 		$abscisa->volumen_llenado_teorico=$request->get('volumen_llenado_teorico');
 		$abscisa->volumen_excavado_teorico=$request->get('volumen_excavado_teorico');
 		$abscisa->volumen_excavado_obra=$request->get('volumen_excavado_obra');
-		$abscisa->volumen_llenado_obra=$request->get('volumen_excavado_teorico');
+		$abscisa->volumen_llenado_obra=$request->get('volumen_llenado_obra');
 		$abscisa->coef_real_llenado=$request->get('coef_real_llenado');
 		$abscisa->coef_real_excavado=$request->get('coef_real_excavado');
 		$abscisa->estadoAbscisa=$request->get('estadoAbscisa');

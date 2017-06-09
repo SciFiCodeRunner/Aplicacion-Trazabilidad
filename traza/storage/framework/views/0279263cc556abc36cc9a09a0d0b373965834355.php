@@ -18,6 +18,12 @@
 			<?php echo e(Form::token()); ?>
 
 			<div class="row">
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+					<div class="form-group">
+						<label for="fecha">Fecha</label><br>
+						<input type="date" name="fecha">
+					</div>
+				   </div>
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
 						<label for="numeroRecibo">numeroRecibo</label>
@@ -25,16 +31,11 @@
 
 					</div>
 				</div>
-				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-					<div class="form-group">
-						<label for="observaciones">Observaciones
-							<textarea class="form-control" rows="2" name="observaciones" placeholder="Observaciones..."></textarea>
-
-						</div>
-					</div>
+					
+				
 					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 						<div class="form-group">
-							<label>Vehiculo</label>
+							<label>Vehículo</label>
 							<select name="idVehiculo" class="form-control">
 								<?php $__currentLoopData = $vehiculos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $vehi): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 								<option value="<?php echo e($vehi->idVehiculo); ?>"> <?php echo e($vehi->placa); ?>
@@ -90,8 +91,15 @@
 					</div>
 					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 						<div class="form-group">
-							<label for="cantidadMaterial">Cantidad Material</label>
-							<input type="text" name="cantidadMaterial" class="form-control" placeholder="cantidad...">
+							<label for="cantidadMaterial">Volumen Material</label>
+							<input type="text" name="cantidadMaterial" pattern="([0-9]){0,10}([0-9]{0,10}.[0-9]{0,10})"  class="form-control" placeholder="cantidad...">
+
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+					<div class="form-group">
+						<label for="observaciones">Observaciones
+							<textarea class="form-control" rows="2" name="observaciones" placeholder="Observaciones..."></textarea>
 
 						</div>
 					</div>

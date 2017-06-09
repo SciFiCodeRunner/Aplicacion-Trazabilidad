@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class= "col-lg-8 col-md-8 col-sm-8 col-xs-12">
 
-			<h3>Detalle Vehiculo Produccion </h3> <a href="http://localhost:8000/traza/listas"><button class="btn btn-success">Retornar</button></a>
+			<h3>Detalle Vehículo Producción </h3> <a href="listas"<button class="btn btn-success">Retornar</button></a>
 		</div>
 	</div>
 	<div class= "row">
@@ -11,7 +11,7 @@
 				<table class= "table table-striped table-bordered table-condensed table-hover">
 					<thead class="bg-success">
 					
-						<th>Vehiculo</th>
+						<th>Vehículo</th>
 						<th>Conductor</th>
 						<th>Cantidad de viajes</th>
 						<th>Costo Acarreo </th>
@@ -34,7 +34,7 @@
 					<thead class="bg-info">
 						<th>Recibo</th>
 						<th>Fecha</th>
-						<th>Vehiculo</th>
+						<th>Vehículo</th>
 						<th>Abscisa Cargue</th>
 						<th>Abscisa Descargue</th>
 						<th>Material</th>

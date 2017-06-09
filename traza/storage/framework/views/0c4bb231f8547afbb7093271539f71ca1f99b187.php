@@ -12,9 +12,10 @@
 			<div class="table-responsive">
 				<table class= "table table-striped table-bordered table-condensed table-hover">
 					<thead class="bg-info">
+					<th>Fecha</th>
 						<th>Recibo</th>
-						<th>Fecha</th>
-						<th>Vehiculo</th>
+						
+						<th>Vehículo</th>
 						<th>Material</th>
 						<th>Abscisa Cargue</th>
 						<th>Abscisa Descargue</th>
@@ -23,8 +24,9 @@
 					</thead>
 					<?php $__currentLoopData = $vehiculos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $vehi): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 					<tr>
-						<td><?php echo e($vehi->numeroRecibo); ?></td>
+			
 						<td><?php echo e($vehi->fecha); ?></td>
+						<td><?php echo e($vehi->numeroRecibo); ?></td>
 						<td><?php echo e($vehi->placa); ?></td>
 						<td><?php echo e($vehi->material); ?></td>
 						<td><?php echo e($vehi->abscargue); ?></td>

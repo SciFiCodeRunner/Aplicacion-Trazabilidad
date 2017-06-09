@@ -119,7 +119,7 @@
               <ul class=" treeview-menu">
                 <li><a href="{{url('traza/choferes')}}"><i class="fa fa-circle-o"></i>Conductores</a></li>
                 <li><a href="{{url('traza/vehiculos')}}"><i class="fa fa-circle-o"></i>Vehiculos de carga</a> </li>
-                <li><a href="{{url('traza/vehiculosTransporte')}}"><i class="fa fa-circle-o"></i>Transporte en obra</a>
+                <li><a href="{{url('traza/vehiculosTransporte')}}"><i class="fa fa-circle-o"></i>Trazabilidad de Material</a>
                 </li>
               </ul>
             </li>
@@ -154,6 +154,7 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class=" treeview active-menu">
+               <li><a href="{{url('traza/listas')}}"><i class="fa fa-circle-o "></i>Empresas</a></li>
                 <li><a href="{{url('traza/listas')}}"><i class="fa fa-circle-o "></i>Vehiculos</a></li>
                   <li><a href="{{url('traza/canteras')}}"><i class="fa fa-circle-o "></i>Canteras</a></li>
                     <li><a href="{{url('traza/materialProduccion')}}"><i class="fa fa-circle-o "></i>Material</a></li>
@@ -182,7 +183,7 @@
             <div class="col-md-12">
               <div class="box">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Software  para manejar  la trazabilidad de una obra lineal</h3>
+                  <h3 class="box-title">Software  para la trazabilidad de una obra lineal</h3>
                   <div class="box-tools pull-right">
                     
                   </div>

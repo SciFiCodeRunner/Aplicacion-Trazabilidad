@@ -3,7 +3,7 @@
 <div class="row">
 	<div class="col-lg-8 col-md-6 col-sm-6 col-xs-12">
 		<h3>
-			Editar Transporte  :{{$vehiculo->numeroRecibo}}</h3>
+			Editar Transporte  :{{$id}}</h3>
 			@if (count($errors)> 0 )
 			<div class="alert alert-danger">
 				<ul>
@@ -14,23 +14,23 @@
 			</div>
 			@endif
 
-			{!!Form::model($vehiculo,['method'=>'PATCH','action'=>['VehiculoTransporteController@update',$vehiculo->numeroRecibo]])!!}
+			{!!Form::model($vehiculo,['method'=>'PATCH','action'=>['VehiculoTransporteController@update',$id]])!!}
 			{{Form::token()}}
 			<div class="row">
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+					<div class="form-group">
+						<label for="fecha">Fecha</label><br>
+						<input type="date" name="fecha" value="{{$vehiculo->fecha}}">
+					</div>
+				   </div>
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
 						<label for="numeroRecibo">numeroRecibo</label>
-						<input type="text" name="numeroRecibo" class="form-control" placeholder="Placa..." value="{{$vehiculo->numeroRecibo}}">
+						<input type="text" name="numeroRecibo" class="form-control" placeholder="Placa..." value="{{$id}}">
 
 					</div>
 				</div>
-				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-					<div class="form-group">
-						<label for="observaciones">Observaciones
-						<textarea class="form-control" rows="2" name="observaciones" placeholder="Observaciones..." value="{{$vehiculo->observaciones}}"></textarea>
-						
-					</div>
-				</div>
+			
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
 						<label>Vehículo</label>
@@ -65,8 +65,12 @@
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
 						<label>Abscisa Cargue</label>
-						<select name="id_abscisa_cargue" class="form-control">
+							<select name="id_abscisa_cargue" class="form-control">
+						<option value="{{$abscargue->idAbscisa}}">{{$abscargue->nombre}}
+							</option>
+					
 							@foreach ($abscisas as $abs)
+
 							<option value="{{$abs->idAbscisa}}"> {{$abs->nombre}}
 							</option>
 							@endforeach
@@ -79,8 +83,10 @@
 					<div class="form-group">
 						<label>Abscisa Descargue</label>
 						<select name="id_abscisa_descargue" class="form-control">
+						<option value="{{$absdescargue->idAbscisa}}"> {{$absdescargue->nombre}}
+							</option>
 							@foreach ($abscisas as $abs2)
-							<option value="{{$abs2->idAbscisa}}"> {{$abs->nombre}}
+							<option value="{{$abs2->idAbscisa}}"> {{$abs2->nombre}}
 							</option>
 							@endforeach
 						</select>
@@ -91,8 +97,15 @@
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
 						<label for="cantidadMaterial">Cantidad Material</label>
-						<input type="text" name="cantidadMaterial" pattern="([0-9]){0,10}([0-9]{0,10}.[0-9]{0,10})" class="form-control" placeholder="cantidad...">
+						<input type="text"  value="{{$vehiculo->cantidadMaterial}}" name="cantidadMaterial" pattern="([0-9]){0,10}([0-9]{0,10}.[0-9]{0,10})" class="form-control" placeholder="cantidad...">
 
+					</div>
+				</div>
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+					<div class="form-group">
+						<label for="observaciones">Observaciones
+						<textarea class="form-control" rows="2" name="observaciones" value="{{$vehiculo->observaciones}}"></textarea>
+						
 					</div>
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">

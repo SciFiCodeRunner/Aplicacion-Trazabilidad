@@ -49,6 +49,8 @@
 					<div class="form-group">
 						<label>Empresa</label>
 						<select name="Empresa_idEmpresa" class="form-control"> 
+						<option value="{{$consulta->idEmpresa}}">{{$consulta->nombre}}
+							</option>
 							@foreach ($empresa as $emp)
 							<option value="{{$emp->idEmpresa}}">{{$emp->nombre}}
 							</option>

@@ -26,7 +26,6 @@ class VehiculoTransporteFormRequest extends FormRequest
         return [
 
         'numeroRecibo'=>'required',
-        'observaciones'=>'required',
         'idVehiculo'=>'required',
         'idMaterial'=>'required',
         'id_abscisa_cargue'=>'required',
