@@ -49,11 +49,11 @@
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
 						<label>Empresa</label>
-						<select name="Empresa_idEmpresa" class="form-control"> 
-						<option value="<?php echo e($consulta->idEmpresa); ?>"><?php echo e($consulta->nombre); ?>
+						<select name="idEmpresa" class="form-control"> 
+						<option value="<?php echo e($consulta2->idEmpresa); ?>"><?php echo e($consulta2->nombre); ?>
 
 							</option>
-							<?php $__currentLoopData = $empresa; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $emp): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+							<?php $__currentLoopData = $empresas2; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $emp): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 							<option value="<?php echo e($emp->idEmpresa); ?>"><?php echo e($emp->nombre); ?>
 
 							</option>
@@ -65,7 +65,11 @@
 					<div class="form-group">
 						<label>Conductor</label>
 						<select name="Choferes_idChofer" class="form-control"> 
-							<?php $__currentLoopData = $chofer; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cho): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
+						<option value="<?php echo e($consulta3->Choferes_idChofer); ?>"><?php echo e($consulta3->nombre); ?>
+
+							</option>
+							<?php $__currentLoopData = $choferes2; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cho): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 							<option value="<?php echo e($cho->idChofer); ?>"><?php echo e($cho->nombre); ?>
 
 							</option>

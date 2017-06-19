@@ -58,31 +58,17 @@
 				
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
-						<label for="volumen_excavado_obra">Volumen Obra corte</label>
+						<label for="volumen_excavado_obra">Volumen Ejecutado corte</label>
 						<input type="text" name="volumen_excavado_obra" value="<?php echo e($abscisa->volumen_excavado_obra); ?>"  pattern="([0-9]){0,10}([0-9]{0,10}.[0-9]{0,10})"  class="form-control" placeholder="volumen exc/obra...">
+						<input type="hidden" name="estadoAbscisa" value="1" class="form-control" >
 
 					</div>
 				</div>
 				
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
-						<label for="volumen_llenado_obra">Volumen Obra llenado</label>
+						<label for="volumen_llenado_obra">Volumen Ejecutado llenado</label>
 						<input type="text" name="volumen_llenado_obra" pattern="([0-9]){0,10}([0-9]{0,10}.[0-9]{0,10})" value="<?php echo e($abscisa->volumen_llenado_obra); ?>" class="form-control" placeholder="volumen llenado/obra...">
-
-					</div>
-				</div>
-				
-				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-					<div class="form-group">
-						<label for="coef_real_excavado">Coeficiente Real corte</label>
-						<input type="text" name="coef_real_excavado" pattern="([0-9]){0,10}([0-9]{0,10}.[0-9]{0,10})"  value="<?php echo e($abscisa->coef_real_excavado); ?>" class="form-control" placeholder="coef/real exc ...">
-                <input type="hidden" name="estadoAbscisa" value="1"  class="form-control" placeholder="coef/real exc ...">
-					</div>
-				</div>
-				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-					<div class="form-group">
-						<label for="coef_real_llenado">Coeficiente Real Llenado</label>
-						<input type="text" name="coef_real_llenado" value="<?php echo e($abscisa->coef_real_llenado); ?>"  pattern="([0-9]){0,10}([0-9]{0,10}.[0-9]{0,10})"  class="form-control" placeholder="coef/real llenado...">
 
 					</div>
 				</div>

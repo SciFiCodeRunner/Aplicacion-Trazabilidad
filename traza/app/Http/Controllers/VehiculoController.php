@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Trazabilidad\Http\Requests;
 use Trazabilidad\Vehiculo;
 use Trazabilidad\Empresa;
+use Trazabilidad\Conductor;
 use Illuminate\Support\Facades\Redirect;
 use
 Trazabilidad\Http\Requests\VehiculoFormRequest;
@@ -21,8 +22,8 @@ class VehiculoController extends Controller
 			$query=trim($request->get('searchText'));
 			$vehiculos=DB::table('vehiculos_transporte as vh')
 			->join('choferes as ch','vh.Choferes_idChofer','=','ch.idChofer')
-			->join('empresas as emp','vh.Empresa_idEmpresa','=','emp.idEmpresa')
-			->select('vh.idVehiculo','vh.placa','vh.costo_acarreo','vh.volumen_transportado','emp.nombre as Empresa','ch.nombre as Conductor','vh.volumen_carga')
+			->join('empresas as emp','vh.idEmpresa','=','emp.idEmpresa')
+			->select('vh.idVehiculo','vh.placa','vh.costo_acarreo','emp.nombre as Empresa','ch.nombre as Conductor','vh.volumen_carga')
 			->where('estado','=',1)
 			->where('vh.placa','LIKE','%'.$query.'%')
 
@@ -45,9 +46,9 @@ class VehiculoController extends Controller
 		$vehiculo->costo_acarreo=$request->get('costo_acarreo');
 		$vehiculo->volumen_carga=$request->get('volumen_carga');
 		$vehiculo->cantidad_viajes=$request->get('cantidad_viajes');
-		$vehiculo->volumen_transportado=$request->get('volumen_transportado');
+	
 		$vehiculo->Choferes_idChofer=$request->get('Choferes_idChofer');
-		$vehiculo->Empresa_idEmpresa=$request->get('Empresa_idEmpresa');
+		$vehiculo->idEmpresa=$request->get('idEmpresa');
 		$vehiculo->save();
 		return Redirect::to('traza/vehiculos');
 		
@@ -58,9 +59,8 @@ class VehiculoController extends Controller
 		$vehiculo->costo_acarreo=$request->get('costo_acarreo');
 		$vehiculo->volumen_carga=$request->get('volumen_carga');
 		$vehiculo->cantidad_viajes=$request->get('cantidad_viajes');
-		$vehiculo->volumen_transportado=$request->get('volumen_transportado');
-		$vehiculo->Choferes_idChofer=$request->get('Choferes_idChofer');
-		$vehiculo->Empresa_idEmpresa=$request->get('Empresa_idEmpresa');
+			$vehiculo->Choferes_idChofer=$request->get('Choferes_idChofer');
+		$vehiculo->idEmpresa=$request->get('idEmpresa');
 		$vehiculo->update();
 		return Redirect::to('traza/vehiculos');
 		
@@ -80,14 +80,16 @@ class VehiculoController extends Controller
 	public function edit($id){
 
 		$consulta=Vehiculo::findOrFail($id);
-		$consulta2=Empresa::findOrFail($consulta->Empresa_idEmpresa);
+
+		$consulta2=Empresa::findOrFail($consulta->idEmpresa);
+		$consulta3=Conductor::findOrFail($consulta->Choferes_idChofer);
 		$empresas2= DB::table('empresas')
 		->where('estadoEmpresa','=',1)
 		->get();
 		$choferes2=DB::table('choferes')
 		->where('estadoChofer','=',1)
 		->get();
-		return view('traza.vehiculos.edit',["empresa"=>$empresas2,"chofer"=>$choferes2,"vehiculo"=>Vehiculo::findOrFail($id),"consulta"=>$consulta2]);
+		return view('traza.vehiculos.edit',["empresas2"=>$empresas2,"choferes2"=>$choferes2,"vehiculo"=>Vehiculo::findOrFail($id),"consulta2"=>$consulta2,"consulta3"=>$consulta3]);
 
 		
 	}

@@ -2,7 +2,7 @@
 <div class="row">
 	<div class="col-lg-8 col-md-6 col-sm-6 col-xs-12">
 		<h3>
-			Nuevo Empresa</h3>
+			Nueva Empresa</h3>
 			<?php if(count($errors)> 0 ): ?>
 			<div class="alert alert-danger">
 				<ul>

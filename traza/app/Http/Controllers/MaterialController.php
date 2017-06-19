@@ -52,7 +52,8 @@ class MaterialController extends Controller
 		
 	}public function destroy($id){
 		$material=Material::findOrFail($id);
-		$chofer->update();
+
+		$material->delete();
 		return Redirect::to('traza/materiales');
 		
 	}

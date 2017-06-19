@@ -24,8 +24,8 @@
 						<td>{{$vehi->placa}}</td>
 						<td>{{$vehi->nombre}}</td>
 						<td>{{$vehi->cantidad_viajes}}
-						<td> {{$vehi->costo_acarreo}} $</td>
-							<td>{{$vehi->total}} $</td>
+						<td> {{number_format($vehi->costo_acarreo,2)}} $</td>
+							<td>{{number_format($vehi->total,2)}} $</td>
 					</tr>
 					@endforeach
 				</table>	

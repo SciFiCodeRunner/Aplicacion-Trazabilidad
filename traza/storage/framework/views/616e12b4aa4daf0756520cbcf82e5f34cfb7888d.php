@@ -22,6 +22,7 @@
 					<div class="form-group">
 						<label for="placa">Placa</label>
 						<input type="text" name="placa" class="form-control" placeholder="Placa...">
+						<input type="hidden" name="cantidad_viajes" value=0 class="form-control" placeholder="Placa...">
 
 					</div>
 				</div>
@@ -58,7 +59,7 @@
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
 						<label>Empresa</label>
-						<select name="Empresa_idEmpresa" class="form-control">
+						<select name="idEmpresa" class="form-control">
 							<?php $__currentLoopData = $empresa; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $emp): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 							<option value="<?php echo e($emp->idEmpresa); ?>"><?php echo e($emp->nombre); ?>
 

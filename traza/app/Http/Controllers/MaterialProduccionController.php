@@ -35,7 +35,7 @@ WHERE vtm.fecha=vtm2.fecha AND vtm2.idMaterial=7) AS Pedraplen,
 WHERE vtm.fecha=vtm2.fecha AND vtm2.idMaterial=5) AS Terraplen,
 (SELECT SUM(vtm2.cantidadMaterial) FROM vehiculo_transporte_material vtm2
 WHERE vtm.fecha=vtm2.fecha AND vtm2.idMaterial=6) AS MaterialComun
-FROM vehiculo_transporte_material vtm
+FROM vehiculo_transporte_material vtm 
 GROUP BY vtm.fecha"));
 
 $collection = Collection::make($material);

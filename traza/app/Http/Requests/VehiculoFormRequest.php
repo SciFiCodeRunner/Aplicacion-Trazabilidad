@@ -25,7 +25,7 @@ class VehiculoFormRequest extends Request{
 			'costo_acarreo'=>'required',
 			'volumen_carga'=>'required|max:10',
             'Choferes_idChofer'=>'required',
-            'Empresa_idEmpresa'=>'required'
+            'idEmpresa'=>'required'
         ];
     }
 }

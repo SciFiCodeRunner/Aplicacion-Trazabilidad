@@ -25,7 +25,7 @@
 				   </div>
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
-						<label for="numeroRecibo">numeroRecibo</label>
+						<label for="numeroRecibo">numero Recibo</label>
 						<input type="text" name="numeroRecibo" value="Nº"class="form-control" placeholder="Recibo...">
 
 					</div>
@@ -87,7 +87,7 @@
 					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 						<div class="form-group">
 							<label for="cantidadMaterial">Volumen Material</label>
-							<input type="text" name="cantidadMaterial" pattern="([0-9]){0,10}([0-9]{0,10}.[0-9]{0,10})"  class="form-control" placeholder="cantidad...">
+							<input type="text" name="cantidadMaterial" pattern="([0-9]){0,15}([0-9]{0,15}.[0-9]{0,15})"  class="form-control" placeholder="cantidad...">
 
 						</div>
 					</div>

@@ -27,14 +27,14 @@
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
-						<label for="compactacion">Compactacion</label>
-						<input type="text" name="compactacion" class="form-control" placeholder="Compaction...">
+						<label for="compactacion">Compactación</label>
+						<input type="text" name="compactacion" pattern="([0-9]){0,10}([0-9]{0,10}.[0-9]{0,10})"  class="form-control" placeholder="Compaction...">
 
 					</div>
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
-						<label for="descripcion ">Descripcion</label>
+						<label for="descripcion ">Descripción</label>
 						<textarea class="form-control" rows="2" name="descripcion" placeholder="Observaciones..."></textarea>
 
 					</div>
@@ -42,7 +42,7 @@
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
 						<label for="precio">Precio</label>
-						<input type="text" name="precio" class="form-control" placeholder="Precio...">
+						<input type="text" name="precio" pattern="([0-9]){0,15}([0-9]{0,15}.[0-9]{0,15})"  class="form-control" placeholder="Precio...">
 
 					</div>
 				</div>

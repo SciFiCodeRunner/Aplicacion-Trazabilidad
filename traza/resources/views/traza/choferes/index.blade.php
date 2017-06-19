@@ -18,7 +18,7 @@
 						<th>Cedula</th>
 						<th>Teléfono</th>
 						
-						<th>Placa</th>	
+						<th>Vehículo</th>	
 						<th>Opciones</th>	
 					</thead>
 					@foreach($choferes as $chofer)

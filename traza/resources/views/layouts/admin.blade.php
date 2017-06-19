@@ -154,7 +154,7 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class=" treeview active-menu">
-               <li><a href="{{url('traza/listas')}}"><i class="fa fa-circle-o "></i>Empresas</a></li>
+               <li><a href="{{url('traza/empresaProduccion')}}"><i class="fa fa-circle-o "></i>Empresas</a></li>
                 <li><a href="{{url('traza/listas')}}"><i class="fa fa-circle-o "></i>Vehiculos</a></li>
                   <li><a href="{{url('traza/canteras')}}"><i class="fa fa-circle-o "></i>Canteras</a></li>
                     <li><a href="{{url('traza/materialProduccion')}}"><i class="fa fa-circle-o "></i>Material</a></li>
@@ -210,7 +210,7 @@
       <!--Fin-Contenido-->
       <footer class="main-footer">
         <div class="pull-right hidden-xs">
-          <b>Version</b>7.0
+          <b>Version</b>10.0
         </div>
       </footer>
 

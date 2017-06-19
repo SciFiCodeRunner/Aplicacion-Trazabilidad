@@ -22,11 +22,11 @@ class VehiculoProduccionController extends Controller
 				$vehiculos1=DB::table('vehiculos_transporte as vt')
 				->join('vehiculo_transporte_material as vtm','vt.idVehiculo','=','vtm.idVehiculo')
 				->join('choferes as cho','cho.idChofer','=','vt.Choferes_idChofer')
-				->select('vt.idVehiculo','vt.placa','vtm.fecha','vtm.observaciones','vtm.cantidadMaterial','vt.costo_acarreo','vt.cantidad_viajes','vt.volumen_transportado','cho.nombre as nombre',DB::raw('vt.cantidad_viajes*vt.costo_acarreo as total'))
+				->select('vt.idVehiculo','vt.placa','vtm.fecha','vtm.observaciones','vtm.cantidadMaterial','vt.costo_acarreo','vt.cantidad_viajes','cho.nombre as nombre',DB::raw('vt.cantidad_viajes*vt.costo_acarreo as total'))
                        ->where('vt.estado','=',1)
-				
-				->where('vt.placa','LIKE','%'.$query.'%')
-
+			
+				->where('vt.idVehiculo','=',$query)
+	->orwhere('vt.placa','LIKE','%'.$query.'%')
 				->orderBy('vt.placa','asc')
 				->groupBy('vt.idVehiculo')
 				->paginate(10000);
@@ -38,7 +38,10 @@ class VehiculoProduccionController extends Controller
 			->join('abscisas as abs2','abs2.idAbscisa','=','vh.id_abscisa_descargue')
 			->select('vt.placa as placa','vh.fecha','vh.numeroRecibo','vh.observaciones','mat.nombre as material','abs.nombre as abscargue','abs2.nombre as absdescargue','vh.cantidadMaterial')
 			->where('vt.estado','=',1)
-			->where('vt.placa','LIKE','%'.$query.'%')
+					->where('vt.idVehiculo','=',$query)
+		
+					->orwhere('vt.placa','LIKE','%'.$query.'%')
+
 				->paginate(1000); 
 
 				return view('traza.listas.index2',["vehiculos2"=>$vehiculos2,"vehiculos"=>$vehiculos1,"searchText"=>$query]);
@@ -46,7 +49,7 @@ class VehiculoProduccionController extends Controller
 				$vehiculos=DB::table('vehiculos_transporte as vt')
 				->join('vehiculo_transporte_material as vtm','vt.idVehiculo','=','vtm.idVehiculo')
 				->join('choferes as cho','cho.idChofer','=','vt.Choferes_idChofer')
-				->select('vt.idVehiculo','vt.placa','vtm.fecha','vtm.observaciones','vtm.cantidadMaterial','vt.costo_acarreo','vt.cantidad_viajes','vt.volumen_transportado','cho.nombre as nombre',DB::raw('vt.cantidad_viajes*vt.costo_acarreo as total'))
+				->select('vt.idVehiculo','vt.placa','vtm.fecha','vtm.observaciones','vtm.cantidadMaterial','vt.costo_acarreo','vt.cantidad_viajes','cho.nombre as nombre',DB::raw('vt.cantidad_viajes*vt.costo_acarreo as total'))
 				->where('vt.estado','=',1)
 				->where('vt.placa','LIKE','%'.$query.'%')
 				->orwhere('vt.idVehiculo','LIKE','%'.$query.'%')

@@ -39,9 +39,9 @@ class VehiculoTransporteController extends Controller
 	}
 	public function create(){
 		$materiales=DB::table('materiales')->get();
-		$choferes=DB::table('choferes')->get();
-		$abscisa=DB::table('abscisas')->get();
-		$vehiculo=DB::table('vehiculos_transporte')->get();
+		$choferes=DB::table('choferes')->where('estadoChofer','=',1)->get();
+		$abscisa=DB::table('abscisas')->where('estadoAbscisa','=',1)->orwhere('estadoAbscisa','=',3)->orderBy('nombre','asc')->get();
+		$vehiculo=DB::table('vehiculos_transporte')->where('estado','=',1)->get();
 		return view("traza.vehiculosTransporte.create",["chofer"=>$choferes,"vehiculos"=>$vehiculo,"materiales"=>$materiales,"abscisas"=>$abscisa]);
 		
 	}
@@ -81,8 +81,7 @@ class VehiculoTransporteController extends Controller
 	}public function destroy($id){
 		$vehiculo=VehiculoTransporte::findOrFail($id);
 			DB::update("update vehiculos_transporte SET cantidad_viajes=cantidad_viajes-1 where idVehiculo=$vehiculo->idVehiculo");
-		$vehiculo->estadoTrans=0;
-		$vehiculo->update();
+         $vehiculo->delete();
 		return Redirect::to('traza/vehiculosTransporte');
 		
 	}
@@ -104,6 +103,7 @@ $vehiculo=Vehiculo::findOrFail($vehiculoTransMaterial->idVehiculo);
 		$materiales=DB::table('materiales')->get();
 		$empresas= DB::table('empresas')->get();
 		$abscisa=DB::table('abscisas')->get();
+
 		$vehiculos=DB::table('vehiculos_transporte')->get();
 
 		return view('traza.vehiculosTransporte.edit',["materiales"=>$materiales,"abscisas"=>$abscisa,"vehiculo"=>VehiculoTransporte::findOrFail($id),"vehiculos"=>$vehiculos,"material"=>$material,"vehiculoCombo"=>$vehiculo,"abscargue"=>$abscisaCargue,"absdescargue"=>$abscisaDescargue,"id"=>$id]);
