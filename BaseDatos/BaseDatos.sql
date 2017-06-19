@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 04-06-2017 a las 20:44:51
+-- Tiempo de generación: 19-06-2017 a las 22:21:58
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -34,17 +34,21 @@ CREATE TABLE `abscisas` (
   `volumen_excavado_teorico` decimal(10,2) NOT NULL DEFAULT '0.00',
   `estadoAbscisa` tinyint(1) NOT NULL DEFAULT '1',
   `volumen_excavado_obra` decimal(10,2) NOT NULL DEFAULT '0.00',
-  `volumen_llenado_obra` decimal(10,2) NOT NULL DEFAULT '0.00',
-  `coef_real_excavado` decimal(10,2) NOT NULL DEFAULT '0.00',
-  `coef_real_llenado` decimal(10,2) NOT NULL DEFAULT '0.00'
+  `volumen_llenado_obra` decimal(10,2) NOT NULL DEFAULT '0.00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `abscisas`
 --
 
-INSERT INTO `abscisas` (`descripcion`, `idAbscisa`, `nombre`, `volumen_llenado_teorico`, `volumen_excavado_teorico`, `estadoAbscisa`, `volumen_excavado_obra`, `volumen_llenado_obra`, `coef_real_excavado`, `coef_real_llenado`) VALUES
-('E', 21, 'K0+100', '4.00', '1.00', 1, '2.00', '1.00', '3.00', '6.00');
+INSERT INTO `abscisas` (`descripcion`, `idAbscisa`, `nombre`, `volumen_llenado_teorico`, `volumen_excavado_teorico`, `estadoAbscisa`, `volumen_excavado_obra`, `volumen_llenado_obra`) VALUES
+('74744423', 21, 'hello', '0.00', '0.00', 3, '0.00', '0.00'),
+('E', 22, 'K0+001', '234.00', '14.50', 1, '45.00', '12.00'),
+('647233', 23, 'REX', '0.00', '0.00', 3, '0.00', '0.00'),
+('5679', 24, 'LA MINA', '0.00', '0.00', 3, '0.00', '0.00'),
+('LI', 25, 'K0+010', '3.00', '1.00', 1, '5.00', '7.00'),
+('LD', 26, 'K0+020', '0.00', '0.00', 1, '0.00', '0.00'),
+('LD', 27, 'K0+000', '0.00', '0.00', 1, '0.00', '0.00');
 
 -- --------------------------------------------------------
 
@@ -66,7 +70,11 @@ CREATE TABLE `choferes` (
 
 INSERT INTO `choferes` (`cedula`, `nombre`, `telefono`, `idChofer`, `estadoChofer`) VALUES
 (16721731, 'Juan Carlos Vargas', '3004231410', 20, 1),
-(7415310, 'Sebastian Salazar', '3204161514', 21, 1);
+(7415310, 'Sebastian Salazar', '3204161514', 21, 1),
+(10929978, 'Giovanny', '2322333', 22, 1),
+(12212321, 'Andrea yan', '7456728', 23, 1),
+(13763272, 'cristian soto', '28737562', 24, 1),
+(41921631, 'soto', '1234567', 25, 1);
 
 -- --------------------------------------------------------
 
@@ -86,12 +94,9 @@ CREATE TABLE `empresas` (
 --
 
 INSERT INTO `empresas` (`idEmpresa`, `nombre`, `estadoEmpresa`, `direccion`) VALUES
-(1, 'Camu', 0, 'wd233'),
-(2, 'Argos', 0, ''),
-(3, 'constructora occidente', 0, ''),
-(8, 'Sin empresa', 0, 'no aplica'),
-(9, 'Latin Transportes', 1, 'Bogota Dc'),
-(10, 'Ceron Ingenieria', 1, 'Bogota Dc');
+(12, 'Latin cemento', 1, '1234567'),
+(13, 'cristal cañon', 1, '987654321'),
+(14, 'machine materiales', 1, '654321');
 
 -- --------------------------------------------------------
 
@@ -103,8 +108,8 @@ CREATE TABLE `materiales` (
   `idMaterial` int(11) NOT NULL,
   `nombre` varchar(45) NOT NULL,
   `descripcion` varchar(80) NOT NULL,
-  `compactacion` decimal(10,0) NOT NULL DEFAULT '0',
-  `precio` decimal(10,0) NOT NULL DEFAULT '0'
+  `compactacion` decimal(10,2) NOT NULL DEFAULT '0.00',
+  `precio` decimal(10,2) NOT NULL DEFAULT '0.00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -112,14 +117,12 @@ CREATE TABLE `materiales` (
 --
 
 INSERT INTO `materiales` (`idMaterial`, `nombre`, `descripcion`, `compactacion`, `precio`) VALUES
-(1, 'Sub-Rasante', 'estable', '1', '4500'),
-(2, 'base', 'material en buen estado', '2', '70000'),
-(3, 'Sub-base', 'excelente', '2', '6855'),
-(4, 'filtrante', 'bien', '2', '89000'),
-(5, 'terraplen', 'material', '2', '450000'),
-(6, 'materialComun', 'material', '2', '20000'),
-(7, 'pedraplen', 'material', '1', '87000'),
-(8, 'MaterialNuevo', 'buen estado', '2', '30000');
+(2, 'Base', 'material', '2.60', '70000.30'),
+(3, 'Sub-base', 'material', '2.00', '6855.00'),
+(4, 'Filtrante', 'material', '2.00', '89000.00'),
+(5, 'Terraplen', 'material', '2.00', '450000.00'),
+(6, 'Material_Comun', 'material', '2.00', '20000.00'),
+(7, 'Pedraplen', 'material', '1.00', '87000.00');
 
 -- --------------------------------------------------------
 
@@ -129,9 +132,19 @@ INSERT INTO `materiales` (`idMaterial`, `nombre`, `descripcion`, `compactacion`,
 
 CREATE TABLE `obra` (
   `nombreObra` varchar(40) NOT NULL,
-  `Responsable` varchar(40) NOT NULL,
-  `idObra` int(11) NOT NULL
+  `Responsable` varchar(40) DEFAULT NULL,
+  `idObra` int(11) NOT NULL,
+  `estadoObra` int(1) DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `obra`
+--
+
+INSERT INTO `obra` (`nombreObra`, `Responsable`, `idObra`, `estadoObra`) VALUES
+('aa', 'aaa', 1, 1),
+('Putumayo', 'Mona', 2, 1),
+('Putu', 'obra', 3, NULL);
 
 -- --------------------------------------------------------
 
@@ -152,11 +165,10 @@ CREATE TABLE `user` (
 
 CREATE TABLE `vehiculos_transporte` (
   `placa` varchar(6) NOT NULL,
-  `cantidad_viajes` int(11) DEFAULT NULL,
-  `volumen_carga` decimal(15,0) DEFAULT NULL,
-  `volumen_transportado` decimal(15,0) DEFAULT NULL,
-  `costo_acarreo` decimal(15,0) DEFAULT NULL,
-  `Empresa_idEmpresa` int(11) DEFAULT NULL,
+  `cantidad_viajes` int(11) NOT NULL DEFAULT '0',
+  `volumen_carga` decimal(15,2) NOT NULL,
+  `costo_acarreo` decimal(15,2) NOT NULL,
+  `idEmpresa` int(11) DEFAULT NULL,
   `idVehiculo` int(11) NOT NULL,
   `Choferes_idChofer` int(11) NOT NULL,
   `estado` tinyint(1) NOT NULL DEFAULT '1'
@@ -166,9 +178,11 @@ CREATE TABLE `vehiculos_transporte` (
 -- Volcado de datos para la tabla `vehiculos_transporte`
 --
 
-INSERT INTO `vehiculos_transporte` (`placa`, `cantidad_viajes`, `volumen_carga`, `volumen_transportado`, `costo_acarreo`, `Empresa_idEmpresa`, `idVehiculo`, `Choferes_idChofer`, `estado`) VALUES
-('SQT825', 6, '15', NULL, '60000', 10, 19, 21, 1),
-('92928', NULL, '333', NULL, '33', 8, 22, 20, 1);
+INSERT INTO `vehiculos_transporte` (`placa`, `cantidad_viajes`, `volumen_carga`, `costo_acarreo`, `idEmpresa`, `idVehiculo`, `Choferes_idChofer`, `estado`) VALUES
+('MNU890', 0, '4.00', '4.50', 13, 35, 20, 1),
+('1', 0, '1.00', '1.00', 13, 37, 22, 1),
+('lyj98a', 0, '213.00', '8000.00', 14, 38, 24, 1),
+('uno', 0, '15.00', '20000.00', 14, 39, 25, 1);
 
 -- --------------------------------------------------------
 
@@ -184,17 +198,9 @@ CREATE TABLE `vehiculo_transporte_material` (
   `idMaterial` int(11) NOT NULL,
   `id_abscisa_cargue` int(11) NOT NULL,
   `id_abscisa_descargue` int(11) NOT NULL,
-  `cantidadMaterial` decimal(10,0) NOT NULL,
+  `cantidadMaterial` decimal(10,2) NOT NULL,
   `estadoTrans` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `vehiculo_transporte_material`
---
-
-INSERT INTO `vehiculo_transporte_material` (`fecha`, `numeroRecibo`, `observaciones`, `idVehiculo`, `idMaterial`, `id_abscisa_cargue`, `id_abscisa_descargue`, `cantidadMaterial`, `estadoTrans`) VALUES
-('2017-06-22', 'Nº23', '32', 19, 3, 21, 21, '23', 1),
-('2017-06-22', 'Nº33', 'sdsd', 19, 6, 21, 21, '12', 1);
 
 --
 -- Índices para tablas volcadas
@@ -204,7 +210,8 @@ INSERT INTO `vehiculo_transporte_material` (`fecha`, `numeroRecibo`, `observacio
 -- Indices de la tabla `abscisas`
 --
 ALTER TABLE `abscisas`
-  ADD PRIMARY KEY (`idAbscisa`);
+  ADD PRIMARY KEY (`idAbscisa`),
+  ADD UNIQUE KEY `nombre` (`nombre`);
 
 --
 -- Indices de la tabla `choferes`
@@ -243,11 +250,12 @@ ALTER TABLE `vehiculos_transporte`
   ADD PRIMARY KEY (`idVehiculo`),
   ADD UNIQUE KEY `Choferes_idChofer` (`Choferes_idChofer`),
   ADD UNIQUE KEY `Choferes_idChofer_4` (`Choferes_idChofer`),
-  ADD KEY `fk_Vehiculos_Transporte_Empresa1_idx` (`Empresa_idEmpresa`),
+  ADD KEY `fk_Vehiculos_Transporte_Empresa1_idx` (`idEmpresa`),
   ADD KEY `fk_Vehiculos_Transporte_Choferes1_idx` (`Choferes_idChofer`),
   ADD KEY `Choferes_idChofer_2` (`Choferes_idChofer`),
   ADD KEY `Choferes_idChofer_3` (`Choferes_idChofer`),
-  ADD KEY `Choferes_idChofer_5` (`Choferes_idChofer`);
+  ADD KEY `Choferes_idChofer_5` (`Choferes_idChofer`),
+  ADD KEY `Choferes_idChofer_6` (`Choferes_idChofer`);
 
 --
 -- Indices de la tabla `vehiculo_transporte_material`
@@ -267,32 +275,32 @@ ALTER TABLE `vehiculo_transporte_material`
 -- AUTO_INCREMENT de la tabla `abscisas`
 --
 ALTER TABLE `abscisas`
-  MODIFY `idAbscisa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `idAbscisa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT de la tabla `choferes`
 --
 ALTER TABLE `choferes`
-  MODIFY `idChofer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `idChofer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT de la tabla `empresas`
 --
 ALTER TABLE `empresas`
-  MODIFY `idEmpresa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idEmpresa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT de la tabla `materiales`
 --
 ALTER TABLE `materiales`
-  MODIFY `idMaterial` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `idMaterial` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `obra`
 --
 ALTER TABLE `obra`
-  MODIFY `idObra` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idObra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `vehiculos_transporte`
 --
 ALTER TABLE `vehiculos_transporte`
-  MODIFY `idVehiculo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `idVehiculo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 --
 -- Restricciones para tablas volcadas
 --
@@ -302,7 +310,7 @@ ALTER TABLE `vehiculos_transporte`
 --
 ALTER TABLE `vehiculos_transporte`
   ADD CONSTRAINT `fk_Vehiculos_Transporte_Choferes1` FOREIGN KEY (`Choferes_idChofer`) REFERENCES `choferes` (`idChofer`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_Vehiculos_Transporte_Empresa1` FOREIGN KEY (`Empresa_idEmpresa`) REFERENCES `empresas` (`idEmpresa`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Vehiculos_Transporte_Empresa1` FOREIGN KEY (`idEmpresa`) REFERENCES `empresas` (`idEmpresa`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `vehiculo_transporte_material`
