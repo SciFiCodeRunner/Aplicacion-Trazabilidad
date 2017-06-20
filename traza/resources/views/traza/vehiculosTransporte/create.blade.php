@@ -20,7 +20,7 @@
 			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
 						<label for="fecha">Fecha</label><br>
-						<input type="date" name="fecha">
+						<input type="date" name="fecha" class="form-control">
 					</div>
 				   </div>
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -61,12 +61,16 @@
 					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 						<div class="form-group">
 							<label>Abscisa Cargue</label>
-							<select name="id_abscisa_cargue" class="form-control">
+							<input type=text list=browsers name="id_abscisa_cargue" class="form-control" >
+							<datalist id=browsers >
 								@foreach ($abscisas as $abs)
+								<datalist id=browsers >
 								<option value="{{$abs->idAbscisa}}"> {{$abs->nombre}}
 								</option>
+								</datalist>
 								@endforeach
-							</select>
+
+							
 
 
 						</div>
@@ -74,12 +78,16 @@
 					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 						<div class="form-group">
 							<label>Abscisa Descargue</label>
-							<select name="id_abscisa_descargue" class="form-control">
+							<input type=text list=browsers name="id_abscisa_descargue" class="form-control" >
+							<datalist id=browsers >
 								@foreach ($abscisas as $abs)
+								<datalist id=browsers >
 								<option value="{{$abs->idAbscisa}}"> {{$abs->nombre}}
 								</option>
+								</datalist>
 								@endforeach
-							</select>
+
+							
 
 
 						</div>

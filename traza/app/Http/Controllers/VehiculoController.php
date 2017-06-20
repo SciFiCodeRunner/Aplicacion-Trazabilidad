@@ -83,6 +83,7 @@ class VehiculoController extends Controller
 
 		$consulta2=Empresa::findOrFail($consulta->idEmpresa);
 		$consulta3=Conductor::findOrFail($consulta->Choferes_idChofer);
+
 		$empresas2= DB::table('empresas')
 		->where('estadoEmpresa','=',1)
 		->get();

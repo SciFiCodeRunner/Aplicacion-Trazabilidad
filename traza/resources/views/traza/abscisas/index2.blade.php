@@ -133,9 +133,10 @@
 							<th>Sub Rasante</th>
 
 						</thead>
+						<td>{{$material2->MaterialComun}} mᶟ </td>
 						@foreach($materialk as $mat)
 						<tr  class="bg-success"> 
-							<td>{{$material2->MaterialComun}} mᶟ </td>
+							
 							<td>{{$mat->Pedraplen}} mᶟ </td>
 							<td>{{$mat->Terraplen}} mᶟ </td>
 							<td>{{$mat->Subbase}} mᶟ </td>

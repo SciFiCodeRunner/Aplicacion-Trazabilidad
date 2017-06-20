@@ -132,9 +132,10 @@
 							<th>Sub Rasante</th>
 
 						</thead>
+						<td><?php echo e($material2->MaterialComun); ?> mᶟ </td>
 						<?php $__currentLoopData = $materialk; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $mat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 						<tr  class="bg-success"> 
-							<td><?php echo e($material2->MaterialComun); ?> mᶟ </td>
+							
 							<td><?php echo e($mat->Pedraplen); ?> mᶟ </td>
 							<td><?php echo e($mat->Terraplen); ?> mᶟ </td>
 							<td><?php echo e($mat->Subbase); ?> mᶟ </td>

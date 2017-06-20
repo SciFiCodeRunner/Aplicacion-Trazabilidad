@@ -66,7 +66,7 @@
 						<label>Conductor</label>
 						<select name="Choferes_idChofer" class="form-control"> 
 
-						<option value="<?php echo e($consulta3->Choferes_idChofer); ?>"><?php echo e($consulta3->nombre); ?>
+						<option value="<?php echo e($consulta3->idChofer); ?>"><?php echo e($consulta3->nombre); ?>
 
 							</option>
 							<?php $__currentLoopData = $choferes2; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cho): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>

@@ -63,7 +63,7 @@
 						<label>Conductor</label>
 						<select name="Choferes_idChofer" class="form-control"> 
 
-						<option value="{{$consulta3->Choferes_idChofer}}">{{$consulta3->nombre}}
+						<option value="{{$consulta3->idChofer}}">{{$consulta3->nombre}}
 							</option>
 							@foreach ($choferes2 as $cho)
 							<option value="{{$cho->idChofer}}">{{$cho->nombre}}
