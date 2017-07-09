@@ -55,8 +55,8 @@
 
 			<!--volumen compacto-->
 			
-			<td >{{round($Terraplen/1.3-$abs->volumen_excavado_obra,2)}}</td>
-			<td >{{round($Comun/1.3-$abs->volumen_llenado_obra,2)}}</td>
+			<td >{{round($Terraplen/1.3-$abs->volumen_excavado_obra,2)}} mᶟ</td>
+			<td >{{round($Comun/1.3-$abs->volumen_llenado_obra,2)}} mᶟ</td>
 		</tr>
 		<TR>
 			<th colspan="1" class="bg-info" ></th>
@@ -77,36 +77,38 @@
 			<td></td>
 			<!--ccoeficiente teorico Excavado-->
 			@if($Terraplen==0||$abs->volumen_excavado_teorico==0.00||$abs->volumen_excavado_teorico==0||$abs->volumen_excavado_teorico==0.0)
-			<td colspan="2">{{0}} mᶟ </td>
+			<td colspan="2">{{0}}  </td>
 			@elseif ($Terraplen/$abs->volumen_excavado_teorico>1.35||$Terraplen/$abs->volumen_excavado_teorico < 1.25)
-			<td id="color1" colspan="2">{{round($Terraplen/$abs->volumen_excavado_teorico,2)}} mᶟ </td>
+			<td id="color1" colspan="2">{{round($Terraplen/$abs->volumen_excavado_teorico,2)}} </td>
 			@else
-			<td colspan="2">{{round($Terraplen/$abs->volumen_excavado_teorico,2)}} mᶟ </td>
+			<td colspan="2">{{round($Terraplen/$abs->volumen_excavado_teorico,2)}}  </td>
 			@endif
 
 			<!--coeficiente/teorico LLeno-->
 
 			@if($Comun==0||$abs->volumen_llenado_teorico==0.00||$abs->volumen_llenado_teorico==0||$abs->volumen_llenado_teorico==0.0)
-			<td colspan="2">{{0}} mᶟ </td>
+			<td colspan="2">{{0}}  </td>
 			@elseif ($Comun/$abs->volumen_llenado_teorico>1.35||$Comun/$abs->volumen_llenado_teorico < 1.25)
-			<td id="color1" colspan="2">{{round($Comun/$abs->volumen_llenado_teorico,2)}} mᶟ </td>
+			<td id="color1" colspan="2">{{round($Comun/$abs->volumen_llenado_teorico,2)}} </td>
 			@else
-			<td colspan="2">{{round($Comun/$abs->volumen_llenado_teorico,2)}} mᶟ </td>
+			<td colspan="2">{{round($Comun/$abs->volumen_llenado_teorico,2)}} </td>
+			@endif
+
+
+			<!--coeficiente/real corte-->
+
+			@if($Terraplen==0||$abs->volumen_excavado_obra==0||$abs->volumen_excavado_obra==0.0||$Terraplen==0.00||$Terraplen==0.0)
+			<td colspan="2">{{0}}  </td>
+			@else
+			<td colspan="2">{{round($Terraplen/$abs->volumen_excavado_obra,2)}} </td>
 			@endif
 
 
 			<!--coeficienteRealLLeno-->
-			@if($Terraplen==0||$abs->volumen_llenado_obra==0||$abs->volumen_llenado_obra==0.0||$abs->volumen_llenado_obra==0.00||$Terraplen==0.00||$Terraplen==0.0)
-			<td colspan="2">{{0}} mᶟ </td>
+			@if($Comun==0||$abs->volumen_llenado_obra==0||$abs->volumen_llenado_obra==0.0||$abs->volumen_llenado_obra==0.00||$Comun==0.00||$Comun==0.0)
+			<td colspan="2">{{0}} </td>
 			@else
-			<td colspan="2">{{round($Terraplen/$abs->volumen_excavado_obra,2)}} mᶟ </td>
-			@endif
-			<!--coeficiente/real corte-->
-
-			@if($Comun==0||$abs->volumen_excavado_obra==0||$abs->volumen_excavado_obra==0.0||$Comun==0.00||$Comun==0.0)
-			<td colspan="2">{{0}} mᶟ </td>
-			@else
-			<td colspan="2">{{round($Comun/$abs->volumen_llenado_obra,2)}} mᶟ</td>
+			<td colspan="2">{{round($Comun/$abs->volumen_llenado_obra,2)}}  </td>
 			@endif
 
 		</tr>
@@ -133,9 +135,10 @@
 							<th>Sub Rasante</th>
 
 						</thead>
-						<td>{{$material2->MaterialComun}} mᶟ </td>
-						@foreach($materialk as $mat)
 						<tr  class="bg-success"> 
+						<td>{{$material2}} mᶟ </td>
+						@foreach($materialk as $mat)
+						
 							
 							<td>{{$mat->Pedraplen}} mᶟ </td>
 							<td>{{$mat->Terraplen}} mᶟ </td>

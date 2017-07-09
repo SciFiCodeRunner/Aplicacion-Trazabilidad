@@ -16,16 +16,16 @@
 						<th>Conductor</th>
 						<th>Cantidad de viajes</th>
 						<th>Costo Acarreo </th>
-						<th>PagoTransporte</th>
+						<th>Pago Transporte</th>
 						
 					</thead>
 					@foreach($vehiculos as $vehi)
 					<tr >
 						<td>{{$vehi->placa}}</td>
 						<td>{{$vehi->nombre}}</td>
-						<td>{{$vehi->cantidad_viajes}}
-						<td> {{number_format($vehi->costo_acarreo,2)}} $</td>
-							<td>{{number_format($vehi->total,2)}} $</td>
+						<td>{{$vehi->contador}}
+						<td> $ {{number_format($vehi->costo_acarreo,2)}}</td>
+							<td> $  {{number_format($vehi->total*$vehi->contador,2)}}</td>
 					</tr>
 					@endforeach
 				</table>	
@@ -48,7 +48,7 @@
 						<td>{{$vehi->abscargue}}</td>
 						<td>{{$vehi->absdescargue}}</td>
 						<td>{{$vehi->material}}</td>
-						<td>{{$vehi->cantidadMaterial}}</td>
+						<td>{{$vehi->cantidadMaterial}} mᶟ</td>
 					</tr>
 					@include ('traza.vehiculosTransporte.modal')
 					@endforeach

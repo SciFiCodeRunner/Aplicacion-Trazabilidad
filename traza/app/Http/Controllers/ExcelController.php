@@ -44,7 +44,7 @@ public function getExportNominaVehiculos(){
    $vehiculos=DB::table('vehiculos_transporte as vt')
         ->join('vehiculo_transporte_material as vtm','vt.idVehiculo','=','vtm.idVehiculo')
         ->join('choferes as cho','cho.idChofer','=','vt.Choferes_idChofer')
-        ->select('vtm.fecha','vt.placa','cho.nombre','vt.costo_acarreo','vt.cantidad_viajes',DB::raw('vt.cantidad_viajes*vt.costo_acarreo as total'))
+        ->select('vtm.fecha','vt.placa','cho.nombre','vt.costo_acarreo',db::raw('count(*) as contador'),DB::raw('vt.cantidad_viajes*vt.costo_acarreo as total'),db::raw('sum(vt.costo_acarreo) AS precio'))
         ->where('vt.estado','=',1)
         ->groupBy('vt.idVehiculo')
         ->orderBy('vt.placa','asc')->get();

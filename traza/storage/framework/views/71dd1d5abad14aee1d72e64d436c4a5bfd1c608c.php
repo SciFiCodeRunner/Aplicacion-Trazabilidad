@@ -24,10 +24,10 @@
 				<tr >
 					<td><?php echo e($vehi->placa); ?></td>
 					<td><?php echo e($vehi->nombre); ?></td>
-					<td><?php echo e($vehi->cantidad_viajes); ?>
+					<td><?php echo e($vehi->contador); ?>
 
-						<td> <?php echo e(number_format($vehi->costo_acarreo,2)); ?> $</td>
-						<td><?php echo e(number_format($vehi->total,2)); ?> $</td>
+						<td>$ <?php echo e(number_format($vehi->costo_acarreo,2)); ?></td>
+						<td> $ <?php echo e(number_format($vehi->total*$vehi->contador,2)); ?></td>
 						<td>
 							<?php echo Form::open(array('url'=>'traza/listas','method'=>'GET','autocomplete'=>'off','role'=>'search')); ?>
 

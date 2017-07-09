@@ -34,9 +34,10 @@ class EmpresaProduccionController extends Controller
 				->join('vehiculos_transporte as vht','vh.idVehiculo','=','vht.idVehiculo')
 				->join('empresas as emp','vht.idEmpresa','=','emp.idEmpresa')
 				->join('materiales as mat','mat.idMaterial','=','vh.idMaterial')
-				->select('abs.nombre as cargue','vh.fecha','vh.numeroRecibo','vht.placa','vh.cantidadMaterial','mat.nombre as matnombre','emp.nombre as empnombre','abs2.nombre as descargue','vht.costo_acarreo','vht.cantidad_viajes')
+				->select('vh.fecha','abs.nombre as cargue','vh.fecha','vh.numeroRecibo','vht.placa','vh.cantidadMaterial','mat.nombre as matnombre','emp.nombre as empnombre','abs2.nombre as descargue','vht.costo_acarreo','vht.cantidad_viajes')
 				->where('emp.estadoEmpresa','=',1)
 				->where('emp.idEmpresa','=',$num)
+				->orderBy('vh.fecha','asc')
 				->paginate(1000);
 
 

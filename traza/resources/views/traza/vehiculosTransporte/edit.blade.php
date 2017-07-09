@@ -17,15 +17,16 @@
 			{!!Form::model($vehiculo,['method'=>'PATCH','action'=>['VehiculoTransporteController@update',$id]])!!}
 			{{Form::token()}}
 			<div class="row">
+			
 			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
 						<label for="fecha">Fecha</label><br>
-						<input type="date" name="fecha" value="{{$vehiculo->fecha}}">
+						<input type="date" name="fecha" value="{{$vehiculo->fecha}}" class="form-control">
 					</div>
 				   </div>
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
-						<label for="numeroRecibo">numeroRecibo</label>
+						<label for="numeroRecibo">Número Recibo</label>
 						<input type="text" name="numeroRecibo" class="form-control" placeholder="Placa..." value="{{$id}}">
 
 					</div>
@@ -85,8 +86,8 @@
 						<select name="id_abscisa_descargue" class="form-control">
 						<option value="{{$absdescargue->idAbscisa}}"> {{$absdescargue->nombre}}
 							</option>
-							@foreach ($abscisas as $abs2)
-							<option value="{{$abs2->idAbscisa}}"> {{$abs2->nombre}}
+							@foreach ($abscisas as $abs)
+							<option value="{{$abs->idAbscisa}}"> {{$abs->nombre}}
 							</option>
 							@endforeach
 						</select>

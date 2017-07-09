@@ -6,7 +6,7 @@
   #color2{color:blue;}
   #scroll {
    width:1080px;
-   height:500px;
+   height:540px;
    overflow:auto;
  }
 </style>
@@ -153,18 +153,30 @@
   </li>     
   <li class=" treeview active">
     <a href="#">
-
-      <i class="fa fa-cogs" aria-hidden="true"></i>
+    
+<i class="fa fa-file-text" aria-hidden="true"></i>
       <span>Resumen</span>
       <i class="fa fa-angle-left pull-right"></i>
     </a>
     <ul class=" treeview active-menu">
-     <li><a href="{{url('traza/empresaProduccion')}}"><i class="fa fa-circle-o "></i>Empresas</a></li>
-     <li><a href="{{url('traza/listas')}}"><i class="fa fa-circle-o "></i>Vehiculos</a></li>
-     <li><a href="{{url('traza/canteras')}}"><i class="fa fa-circle-o "></i>Canteras</a></li>
-     <li><a href="{{url('traza/materialProduccion')}}"><i class="fa fa-circle-o "></i>Material</a></li>
+     <li><a href="{{url('traza/empresaProduccion')}}"> <i class="fa fa-cog fa-spin fa-1x fa-fw"></i>Empresas</a></li>
+     <li><a href="{{url('traza/listas')}}"> <i class="fa fa-cog fa-spin fa-1x fa-fw"></i>Vehiculos</a></li>
+     <li><a href="{{url('traza/canteras')}}"> <i class="fa fa-cog fa-spin fa-1x fa-fw"></i>Canteras</a></li>
+     <li><a href="{{url('traza/materialProduccion')}}"> <i class="fa fa-cog fa-spin fa-1x fa-fw"></i>Material</a></li>
    </ul>
  </li>     
+ <li class=" treeview active">
+        <a href="#">
+
+        <i class="fa fa-floppy-o" aria-hidden="true"></i>
+          <span>DataBase</span>
+          <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class=" treeview-menu">
+          <li><a href="{{url('http://localhost/phpmyadmin/')}}"  target="blank"><i class="fa fa-circle-o"></i>Base Datos</a></li>
+        </ul>
+      </li>
+
 
 
 

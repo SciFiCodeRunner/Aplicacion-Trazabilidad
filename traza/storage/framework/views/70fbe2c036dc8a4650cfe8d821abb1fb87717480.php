@@ -27,8 +27,8 @@
 		<td><?php echo e($abs->descargue); ?></td>
 		<td><?php echo e($abs->placa); ?></td>
 		<td><?php echo e($abs->matnombre); ?></td>
-		<td><?php echo e($abs->cantidadMaterial); ?></td>
-		<td><?php echo e($abs->costo_acarreo); ?></td>
+		<td><?php echo e($abs->cantidadMaterial); ?>   mᶟ</td>
+		<td>$ <?php echo e($abs->costo_acarreo); ?></td>
 
 
 		</tr>

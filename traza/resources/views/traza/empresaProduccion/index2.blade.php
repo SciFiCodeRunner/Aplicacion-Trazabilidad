@@ -7,7 +7,7 @@
 	</div>
 </div>
 
-<h4 style="text-align:center" ><font color="red">Trazabilidad Material</font></h4>
+<h4 style="text-align:center" ><font color="red">Resumen Transporte Material</font></h4>
 <table class= "table table-striped table-bordered table-condensed table-hover">
 	<thead  style="background-color:#9B7272";">
 		<th>Fecha</th>
@@ -18,7 +18,7 @@
 		<th>Placa</th>
 		<th>Nombre Material</th>	
 		<th> Cantidad Material</th>
-		<th>Acarreo</th>
+		<th>Costo Acarreo</th>
 	</thead>
 	@foreach($abscisa1 as $abs)
 	<tr>
@@ -28,8 +28,8 @@
 		<td>{{$abs->descargue}}</td>
 		<td>{{$abs->placa}}</td>
 		<td>{{$abs->matnombre}}</td>
-		<td>{{$abs->cantidadMaterial}}</td>
-		<td>{{$abs->costo_acarreo}}</td>
+		<td>{{$abs->cantidadMaterial}}   mᶟ</td>
+		<td>$ {{$abs->costo_acarreo}}</td>
 
 
 		</tr>

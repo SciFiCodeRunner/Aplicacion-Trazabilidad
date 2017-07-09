@@ -18,16 +18,16 @@
 					<th>Conductor</th>
 					<th>Cantidad de viajes</th>
 					<th>Costo Acarreo </th>
-					<th>PagoTransporte</th>
-					<th>opción</th>
+					<th>Pago Transporte</th>
+					<th>Opción</th>
 				</thead>
 				@foreach($vehiculos as $vehi)
 				<tr >
 					<td>{{$vehi->placa}}</td>
 					<td>{{$vehi->nombre}}</td>
-					<td>{{$vehi->cantidad_viajes}}
-						<td> {{number_format($vehi->costo_acarreo,2)}} $</td>
-						<td>{{number_format($vehi->total,2)}} $</td>
+					<td>{{$vehi->contador}}
+						<td>$ {{number_format($vehi->costo_acarreo,2)}}</td>
+						<td> $ {{number_format($vehi->total*$vehi->contador,2)}}</td>
 						<td>
 							{!! Form::open(array('url'=>'traza/listas','method'=>'GET','autocomplete'=>'off','role'=>'search'))!!}
 

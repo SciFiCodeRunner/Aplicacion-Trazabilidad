@@ -15,7 +15,6 @@
 						
 						<th>Nombre</th>
 						<th>Telefono</th>
-					
 					</thead>
 					@foreach($empresas as $emp)
 						<td>{{$emp->nombre}}</td>

@@ -32,7 +32,8 @@
 								<option   value="{{$abscisa->descripcion}}">{{$abscisa->descripcion}}</option>
 								<option value="LD">LDERECHO
 								<option value="LI">LIZQUIERDO
-								<option value="E">E
+								<option value="E">EJE
+												<option value="B">B/Completa
 								</option>
 								
 							</select>
@@ -49,7 +50,7 @@
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
-						<label for="volumen_llenado_teorico">Volumen Diseño llenado</label>
+						<label for="volumen_llenado_teorico">Volumen Diseño lleno</label>
 						<input type="text" value="{{$abscisa->volumen_llenado_teorico}}" name="volumen_llenado_teorico" pattern="([0-9]){0,10}([0-9]{0,10}.[0-9]{0,10})"   class="form-control" placeholder="Volumen llenado teorico...">
 
 					</div>
@@ -66,7 +67,7 @@
 				
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
-						<label for="volumen_llenado_obra">Volumen Ejecutado llenado</label>
+						<label for="volumen_llenado_obra">Volumen Ejecutado lleno</label>
 						<input type="text" name="volumen_llenado_obra" pattern="([0-9]){0,10}([0-9]{0,10}.[0-9]{0,10})" value="{{$abscisa->volumen_llenado_obra}}" class="form-control" placeholder="volumen llenado/obra...">
 
 					</div>

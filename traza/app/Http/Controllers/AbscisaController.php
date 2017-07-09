@@ -58,8 +58,16 @@ class AbscisaController extends Controller
 
 				$collectionComun=Collection::make($material2);
 
-				$variable =$collectionComun->first();
 			
+				if(count($material2)>0){
+					
+							$varaux=$collectionComun->first();
+				$variable=$varaux->MaterialComun;
+				}
+				else{
+					$variable=0.00;
+				}
+
 	
 				$collection = Collection::make($material);
 				/*Material Terraplen LLeno*/

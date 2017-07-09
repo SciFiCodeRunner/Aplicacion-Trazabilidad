@@ -15,7 +15,7 @@
 		<th>Placa</th>
 		<th>Cantidad Material</th>	
 		<th>Material</th>
-		<th>Precio Material</th>
+		<th>Precio Material X mᶟ</th>
 	</thead>
 	<?php $__currentLoopData = $abscisa1; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $abs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 	<tr>
@@ -28,7 +28,7 @@
 			<td><?php echo e($abs->matnombre); ?>
 
 			</td>
-			<td><?php echo e($abs->precio); ?></td>
+			<td>$ <?php echo e($abs->precio); ?></td>
 		</tr>
 		<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 	</table>	
@@ -41,7 +41,7 @@
 		<th>Placa</th>
 		<th>Cantidad Material</th>	
 		<th>Material</th>
-		<th>Precio Material</th>
+		<th>Precio Material X mᶟ</th>
 	</thead>
 	<?php $__currentLoopData = $abscisa2; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $abs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 	<tr>
@@ -54,7 +54,7 @@
 			<td><?php echo e($abs->matnombre); ?>
 
 			</td>
-			<td><?php echo e($abs->precio); ?></td>
+			<td>$ <?php echo e($abs->precio); ?></td>
 		</tr>
 		<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 	</table>	
@@ -72,7 +72,7 @@
 							<th>Material Comun</th>
 							<th>PedraPlen</th>
 							<th>Terraplen</th>
-							<th>Subw Base</th>
+							<th>Sub Base</th>
 							<th>Base</th>
 							<th>Filtrante</th>
 							<th>Sub Rasante</th>

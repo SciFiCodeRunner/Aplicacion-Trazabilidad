@@ -65,8 +65,7 @@ class VehiculoTransporteController extends Controller
 	}
 	public function update(VehiculoTransporteFormRequest $request,$id){
 		$vehiculo=VehiculoTransporte::findOrFail($id);
-		$date = Carbon::now();
-		$vehiculo->fecha=$date->toDateTimeString();
+			$vehiculo->fecha=$request->get('fecha');
 		$vehiculo->numeroRecibo=$request->get('numeroRecibo');
 		$vehiculo->observaciones=$request->get('observaciones');
 		$vehiculo->idVehiculo=$request->get('idVehiculo');
@@ -102,7 +101,7 @@ $vehiculo=Vehiculo::findOrFail($vehiculoTransMaterial->idVehiculo);
  dd($vehiculo);*/
 		$materiales=DB::table('materiales')->get();
 		$empresas= DB::table('empresas')->get();
-		$abscisa=DB::table('abscisas')->get();
+		$abscisa=DB::table('abscisas')->where('estadoAbscisa','=',1)->orwhere('estadoAbscisa','=',3)->get();
 
 		$vehiculos=DB::table('vehiculos_transporte')->get();
 
