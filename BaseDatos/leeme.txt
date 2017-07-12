@@ -1,0 +1,1 @@
+instalar xampp correr la base de datos en el puerto 3307
